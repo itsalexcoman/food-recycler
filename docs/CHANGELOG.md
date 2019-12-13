@@ -1,8 +1,16 @@
 # Changelog
 
-## Version 0.1.0
-_2019-12-03_
+## Version 0.1.1
+_13.12.2019_
 
-- Includes documentation
-- Includes initial package.json
-- Includes initial .gitignore
+- Includes:
+    - initial Interface documentation
+    - initial API documentation
+
+## Version 0.1.0
+_03.12.2019_
+
+- Includes:
+    - documentation folder structure
+    - initial package.json
+    - initial .gitignore
