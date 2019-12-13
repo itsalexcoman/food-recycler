@@ -13,5 +13,5 @@ We've tried to make Food Recycler as intuitive as possible by limiting both the 
     - view available products (be it in a group or the whole bunch of them)
 
 ## Initial blueprint
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp1.jpg)
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp2.jpg)
+![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/images/interface/bp1.jpg)
+![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/images/interface/bp2.jpg)
