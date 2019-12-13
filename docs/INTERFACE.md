@@ -15,10 +15,3 @@ We've tried to make Food Recycler as intuitive as possible by limiting both the 
 ## Initial blueprint
 ![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp1.jpg)
 ![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp2.jpg)
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp3.jpg)
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp4.jpg)
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp5.jpg)
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp6.jpg)
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp7.jpg)
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp8.jpg)
-![](https://raw.githubusercontent.com/itsalexcoman/food-recycler/master/docs/src/interface/bp9.jpg)
