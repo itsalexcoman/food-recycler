@@ -1,6 +1,6 @@
 {
   "name": "food-recycler",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "SPA to help prevent food waste",
   "main": "server.js",
   "scripts": {
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/itsalexcoman/food-recycler/issues"
   },
-  "homepage": "https://github.com/itsalexcoman/food-recycler#readme"
+  "homepage": "https://github.com/itsalexcoman/food-recycler#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^2.0.2",
+    "sequelize": "^5.21.3"
+  }
 }

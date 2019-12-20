@@ -1,5 +1,16 @@
 # Changelog
 
+## Version 0.2.0
+_20.12.2019_
+
+- Includes:
+    - required dependencies:
+        - express
+        - sequelize
+        - mysql2
+    - basic folder structure
+    - initial server.js
+
 ## Version 0.1.1
 _13.12.2019_
 
