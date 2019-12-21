@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
-    var Groups = sequelize.define("groups", {
-        id: {
+    var Buildings = sequelize.define("buildings", {
+        code: {
             type: DataTypes.INTEGER,
             allowNull: false,
             unique: true
-        }, 
+        },
         name: DataTypes.VARCHAR
     });
-    return Groups;
+    return Buildings;
 }
