@@ -1,12 +1,10 @@
 var db = require('./backend/models/index');
 
 db.sequelize.sync({force:true}).then(async () => {
-    console.log('tables created')
-
     let user = await db.Users.create({
         id: 1,
         email: "andrei@yahoo.com",
-        password: "1234"
+        password: "1234",
         full_name: "Andrei Popescu",
         building_code: 1,
         room_number: 100
@@ -41,7 +39,7 @@ db.sequelize.sync({force:true}).then(async () => {
     let user = await db.Users.create({
         id: 2,
         email: "radu@yahoo.com",
-        password: "1234"
+        password: "1234",
         full_name: "Radu Ionescu",
         building_code: 1,
         room_number: 100
@@ -76,7 +74,7 @@ db.sequelize.sync({force:true}).then(async () => {
     let user = await db.Users.create({
         id: 3,
         email: "bogdan@yahoo.com",
-        password: "1234"
+        password: "1234",
         full_name: "Bogdan Popa",
         building_code: 2,
         room_number: 200
@@ -105,10 +103,10 @@ db.sequelize.sync({force:true}).then(async () => {
         user_id: 3,
         quantity: 4,
         unit: "Grame",
-        expiry_date: "2020-01-012"
+        expiry_date: "2020-01-02"
     })
     
-    
+    console.log('Tables created.')    
 }).catch(() => {
-    console.log('could not create tables')
+    console.log('Could not create tables.')
 })
