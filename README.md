@@ -9,7 +9,12 @@
  - Group functionality, so that food will be shared with specific users
  - Integration with popular social media platforms
 
+### Installation
+``` sh
+git clone https://github.com/itsalexcoman/food-recycler
+npm run init
+```
+
 ### Useful Links
 - [Documentation](https://github.com/itsalexcoman/food-recycler/blob/master/docs/)
 - [Changelog](https://github.com/itsalexcoman/food-recycler/blob/master/docs/CHANGELOG.md)
-- [Developer Tools](https://github.com/itsalexcoman/food-recycler/tree/master/docs/dev-tools/)
