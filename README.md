@@ -1,5 +1,5 @@
 # Food Recycler
-Food Recycler is an SPA that can be used to prevent food waste by sharing food they no longer plan on consuming.
+> SPA for preventing food waste by enabling users to share food they no longer plan on consuming
 
 ### Goals
  - Raising awareness about food waste in a fun, community-based manner
@@ -12,4 +12,4 @@ Food Recycler is an SPA that can be used to prevent food waste by sharing food t
 ### Useful Links
 - [Documentation](https://github.com/itsalexcoman/food-recycler/blob/master/docs/)
 - [Changelog](https://github.com/itsalexcoman/food-recycler/blob/master/docs/CHANGELOG.md)
-- [Developer Tools](https://github.com/itsalexcoman/food-recycler/tree/master/docs/dev-tools)
+- [Developer Tools](https://github.com/itsalexcoman/food-recycler/tree/master/docs/dev-tools/)
