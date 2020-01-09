@@ -12,6 +12,7 @@
 ### Installation
 ``` sh
 git clone https://github.com/itsalexcoman/food-recycler
+cd food-recycler
 npm run init
 ```
 
