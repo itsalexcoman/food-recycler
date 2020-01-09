@@ -20,6 +20,7 @@ GET /users/:id
 GET /users/:id/products
 
 GET /products
+GET /products/:id
 
 GET /groups
 GET /groups/:id
