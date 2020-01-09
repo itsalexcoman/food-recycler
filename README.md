@@ -16,6 +16,8 @@ cd food-recycler
 npm run init
 ```
 
+**NOTE:** The database configuration file (./backend/config/db.json) can be modified to your liking.
+
 ### Useful Links
 - [Documentation](https://github.com/itsalexcoman/food-recycler/blob/master/docs/)
 - [Changelog](https://github.com/itsalexcoman/food-recycler/blob/master/docs/CHANGELOG.md)
