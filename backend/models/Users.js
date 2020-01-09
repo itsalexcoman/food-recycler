@@ -3,7 +3,7 @@ module.exports = function(sequelize, DataTypes) {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique:true
+            unique: true
         },
         email: DataTypes.VARCHAR,
         password: DataTypes.VARCHAR,

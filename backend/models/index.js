@@ -44,7 +44,10 @@ db.Products = require('./Products')(sequelize, Sequelize);
 db.Groups = require('./Groups')(sequelize, Sequelize);
 db.GroupMembership = require('./GroupMembership')(sequelize, Sequelize);
 
-db.Users.belongsToMany(db.Groups, {through: db.GroupMembership})
-db.Groups.belongsToMany(db.Users, {through: db.GroupMembership})
+db.Users.belongsToMany(db.Products);
+db.Users.belongsToMany(db.Groups);
+db.Buildings.belongsToMany(db.Users);
+db.Users.belongsToMany(db.Groups, {through: db.GroupMembership});
+db.Groups.belongsToMany(db.Users, {through: db.GroupMembership});
 
 module.exports = db;

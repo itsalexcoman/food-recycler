@@ -5,7 +5,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true
         }, 
-        name: DataTypes.VARCHAR
+        name: DataTypes.VARCHAR,
+        description: DataTypes.VARCHAR,
+        admin_id: DataTypes.INTEGER
     });
     return Groups;
 }
