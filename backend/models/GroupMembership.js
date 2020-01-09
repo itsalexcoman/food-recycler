@@ -3,10 +3,26 @@ module.exports = function(sequelize, DataTypes) {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true
+            unique: true,
+            primaryKey: true,
+            autoIncrement: true,
         },
-        user_id: DataTypes.INTEGER,
-        group_id: DataTypes.INTEGER
+        user_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Users',
+                key: 'id'
+            },
+            allowNull: false
+        },
+        group_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'Groups',
+                key: 'id'
+            },
+            allowNull: false
+        }
     });
     return GroupMembership;
 }

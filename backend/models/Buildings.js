@@ -3,9 +3,15 @@ module.exports = function(sequelize, DataTypes) {
         code: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true
+            unique: true,
+            primaryKey: true,
+            autoIncrement: true,
+            field: 'building_code'
         },
-        name: DataTypes.VARCHAR
+        name: {
+            type: DataTypes.VARCHAR,
+            field: 'building_name'
+        }
     });
     return Buildings;
 }

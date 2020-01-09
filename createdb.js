@@ -17,7 +17,9 @@ db.sequelize.sync({force:true}).then(async () => {
     
     let group = await db.Groups.create({
         id: 1,
-        name: "Grupul 1"
+        name: "Grupul 1",
+        description: "Grupul meu de prieteni",
+        admin_id: 1
     })
 
     let groupMembership = await db.GroupMembership.create({
@@ -31,80 +33,38 @@ db.sequelize.sync({force:true}).then(async () => {
         name: "Lapte Zuzu",
         type: "Lactate",
         user_id: 1,
-        quantity: 2,
-        unit: "Litri",
-        expiry_date: "2020-01-03"
+        days_left: 3
     })
     
-    let user = await db.Users.create({
+     let user2 = await db.Users.create({
         id: 2,
-        email: "radu@yahoo.com",
+        email: "andrei2@yahoo.com",
         password: "1234",
-        full_name: "Radu Ionescu",
+        full_name: "Andrei Ionescu",
         building_code: 1,
         room_number: 100
     })
 
-    let building = await db.Buildings.create({
+    let building2 = await db.Buildings.create({
         code: 2,
         name: "Cladirea 2"
     })
     
-    let group = await db.Groups.create({
-        id: 2,
-        name: "Grupul 2"
-    })
 
-    let groupMembership = await db.GroupMembership.create({
+    let groupMembership2 = await db.GroupMembership.create({
         id: 2,
-        user_id: user.id,
+        user_id: user2.id,
         group_id: group.id
     })
     
-    let product = await db.Products.create({
+    let product2 = await db.Products.create({
         id:2,
-        name: "Spaghete Barilla",
-        type: "Paste",
+        name: "Pate Bucegi",
+        type: "Conserve",
         user_id: 2,
-        quantity: 1,
-        unit: "Grame",
-        expiry_date: "2020-03-03"
+        days_left: 5
     })
     
-    let user = await db.Users.create({
-        id: 3,
-        email: "bogdan@yahoo.com",
-        password: "1234",
-        full_name: "Bogdan Popa",
-        building_code: 2,
-        room_number: 200
-    })
-
-    let building = await db.Buildings.create({
-        code: 3,
-        name: "Cladirea 3"
-    })
-    
-    let group = await db.Groups.create({
-        id: 3,
-        name: "Grupul 3"
-    })
-
-    let groupMembership = await db.GroupMembership.create({
-        id: 3,
-        user_id: user.id,
-        group_id: group.id
-    })
-    
-    let product = await db.Products.create({
-        id:3,
-        name: "Sunca de Praga Meda",
-        type: "Mezeluri",
-        user_id: 3,
-        quantity: 4,
-        unit: "Grame",
-        expiry_date: "2020-01-02"
-    })
     
     console.log('Tables created.')    
 }).catch(() => {

@@ -3,13 +3,41 @@ module.exports = function(sequelize, DataTypes) {
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            unique: true
+            unique: true,
+            primaryKey: true,
+            autoIncrement: true,
+            field: 'user_id'
         },
-        email: DataTypes.VARCHAR,
-        password: DataTypes.VARCHAR,
-        full_name: DataTypes.VARCHAR,
-        building_code: DataTypes.INTEGER,
-        room_number: DataTypes.INTEGER
+        email: {
+            type: DataTypes.VARCHAR,
+            allowNull: false,
+            unique: true,
+            field: 'user_email'
+        },
+        password: {
+            type: DataTypes.VARCHAR,
+            allowNull: false,
+            field: 'user_password'
+        },
+        full_name: {
+            type: DataTypes.VARCHAR,
+            allowNull: false,
+            field: 'user_full_name'
+        },
+        building_code: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            field: 'user_building_code',
+            references: {
+                model: 'Buildings',
+                key: 'code'
+            }
+        },
+        room_number: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            field: 'user_room_number'
+        }
     });
     return Users;
 }
