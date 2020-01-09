@@ -13,31 +13,36 @@ We then began the database design process, which resulted in a simple, but effec
 
 ## Endpoints
 These are the endpoints that can be used for interaction with the aforementioned database:
-#### GET
+#### GET (Read)
 ```
 GET /users
 GET /users/:id
 GET /users/:id/products
 
-GET /products
 GET /products/:id
 
 GET /groups
 GET /groups/:id
 GET /groups/:id/users
+GET /groups/:id/products
 ```
-#### POST
+#### POST (Create)
 ```
 POST /users
-POST /users/:id/products
+POST /products
 POST /groups
 POST /groups/:id/users
 ```
-#### PUT & DELETE
+#### PUT (Update)
 ```
 PUT /users/:id
-PUT /users/:id/products/:id
+PUT /products/:id
 PUT /groups/:id
-
+```
+#### DELETE
+```
+DELETE /users/:id
+DELETE /products/:id
+DELETE /groups/:id
 DELETE /groups/:id/users/:id
 ```
