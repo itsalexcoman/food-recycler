@@ -5,29 +5,25 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
             primaryKey: true,
-            autoIncrement: true,
-            field: 'user_id'
+            autoIncrement: true
         },
+        
         email: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
-            field: 'user_email'
+            unique: true
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false,
-            field: 'user_password'
+            allowNull: false
         },
         full_name: {
             type: DataTypes.TEXT,
-            allowNull: false,
-            field: 'user_full_name'
+            allowNull: false
         },
         building_code: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
-            field: 'user_building_code',
             references: {
                 model: 'Buildings',
                 key: 'code'
@@ -35,9 +31,10 @@ module.exports = function(sequelize, DataTypes) {
         },
         room_number: {
             type: DataTypes.INTEGER.UNSIGNED,
-            allowNull: false,
-            field: 'user_room_number'
+            allowNull: false
         }
     });
     return Users;
+    
 }
+

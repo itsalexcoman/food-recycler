@@ -5,12 +5,10 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false,
             unique: true,
             primaryKey: true,
-            autoIncrement: true,
-            field: 'building_code'
+            autoIncrement: true
         },
         name: {
-            type: DataTypes.TEXT,
-            field: 'building_name'
+            type: DataTypes.TEXT
         }
     });
     return Buildings;
