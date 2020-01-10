@@ -22,10 +22,10 @@ module.exports.getOne = (req, res) => {
 };
 
 module.exports.getAll = (req, res) => {
-    db.Users.findAll().then(
+  db.Users.findAll().then(
     (result) => {
       if (result) {
-               res.status(200).send({
+        res.status(200).send({
           status: "success",
           result: result
         })
@@ -33,13 +33,13 @@ module.exports.getAll = (req, res) => {
         res.status(404).send({
           status: "not found"
         })
-           }
+      }
     }
-       ).catch(() => {
-           res.status(500).send({
+  ).catch(() => {
+    res.status(500).send({
       status: "error"
-           })
-       })
+    })
+  })
 };
 
 module.exports.getProducts = async (req, res, next) => {
@@ -57,40 +57,40 @@ module.exports.getProducts = async (req, res, next) => {
           status: "not found"
         })
       }
-            } else {
+    } else {
       res.status(400).send({
         status: "bad request: user not found"
       })
-            }
+    }
   } catch (error) {
     next(error)
-        }
+  }
 }
 
 module.exports.add = (req, res) => {
-    db.Users.create({
-      name: req.body.name
+  db.Users.create({
+    name: req.body.name
+  })
+    .then(res => {
+      res.json(res);
     })
-      .then(res => {
-        res.json(res);
-      })
-      .catch(err => res.json(err));
-  };
+    .catch(err => res.json(err));
+};
 
 module.exports.update = (req, res) => {
-    db.Users.update({ name: req.body.name }, { where: { id: req.params.id } })
-      .then(updatedUsers => {
-        res.json(updatedUsers);
-      })
-      .catch(err => res.json(err));
-  };
-
-module.exports.delete =  (req, res) => {
-    db.Users.destroy({
-      where: { id: req.params.id }
+  db.Users.update({ name: req.body.name }, { where: { id: req.params.id } })
+    .then(updatedUsers => {
+      res.json(updatedUsers);
     })
-      .then(users => {
-        res.json(users);
-      })
-      .catch(err => res.json(err));
-  };
+    .catch(err => res.json(err));
+};
+
+module.exports.delete = (req, res) => {
+  db.Users.destroy({
+    where: { id: req.params.id }
+  })
+    .then(users => {
+      res.json(users);
+    })
+    .catch(err => res.json(err));
+};

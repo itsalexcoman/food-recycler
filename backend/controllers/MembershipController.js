@@ -11,7 +11,7 @@ module.exports.add = (req, res) => {
       .catch(err => res.json(err));
   };
 
-module.exports.remove = (req, res) => {
+module.exports.delete = (req, res) => {
     db.Membership.destroy({
       where: { id: req.params.id }
     }).then(group_membership => {
