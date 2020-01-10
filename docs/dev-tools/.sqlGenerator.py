@@ -8,6 +8,9 @@ with open(sys.argv[1], 'r') as json_file:
     password = file["password"]
     hostname = file["hostname"]
     
+print("drop user if exists 'fr_user'@'localhost';")
+print("drop database if exists fr_database;")
+
 print("drop user if exists '" + username + "'@'" + hostname + "';")
 print("create user '" + username + "'@'" + hostname + "' identified by '" + password + "';")
 print("drop database if exists " + database + ";")
