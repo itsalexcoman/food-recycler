@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Membership = sequelize.define("membership", {
         id: {
             type: DataTypes.INTEGER.UNSIGNED,

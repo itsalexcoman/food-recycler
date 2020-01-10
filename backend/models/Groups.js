@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Groups = sequelize.define("groups", {
         id: {
             type: DataTypes.INTEGER.UNSIGNED,
@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
             unique: true,
             primaryKey: true,
             autoIncrement: true
-        }, 
+        },
         name: {
             type: DataTypes.STRING,
             allowNull: false

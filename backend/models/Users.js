@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
     var Users = sequelize.define("users", {
         id: {
             type: DataTypes.INTEGER.UNSIGNED,
@@ -7,7 +7,6 @@ module.exports = function(sequelize, DataTypes) {
             primaryKey: true,
             autoIncrement: true
         },
-        
         email: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -31,6 +30,4 @@ module.exports = function(sequelize, DataTypes) {
         }
     });
     return Users;
-    
 }
-
