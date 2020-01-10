@@ -1,35 +1,72 @@
 var db = require('../models/index');
 
+module.exports.getOne = (req, res) => {
+  db.Users.findByPk(req.params.id).then(
+    (result) => {
+      if (result) {
+        res.status(200).send({
+          status: "success",
+          result: result
+        })
+      } else {
+        res.status(404).send({
+          status: "not found"
+        })
+      }
+    }
+  ).catch(() => {
+    res.status(500).send({
+      status: "error"
+    })
+  })
+};
+
 module.exports.getAll = (req, res) => {
     db.Users.findAll().then(
-           (results) => {
+    (result) => {
+      if (result) {
                res.status(200).send({
-                   status: "Users.findAll() success",
-                   results: results
-               });
+          status: "success",
+          result: result
+        })
+      } else {
+        res.status(404).send({
+          status: "not found"
+        })
            }
+    }
        ).catch(() => {
            res.status(500).send({
-               status: "Users.findAll() error"
+      status: "error"
            })
        })
 };
 
-module.exports.getOne = (req, res) => {
-    db.Users.findByPk(req.params.id, {
-        include: [{
-          model: db.Users
-        }]
-      }).then(
-        (result) => {
-            if(result) {
-                res.status(200).send(result)
+module.exports.getProducts = async (req, res, next) => {
+  try {
+    const currentUser = await db.Users.findByPk(req.params.id);
+    if (currentUser) {
+      const products = await currentUser.getProducts({ raw: true });
+      if (products.length) {
+        res.status(200).send({
+          status: "success",
+          result: products
+        })
+      } else {
+        res.status(404).send({
+          status: "not found"
+        })
+      }
             } else {
-                res.status(404).send()
+      res.status(400).send({
+        status: "bad request: user not found"
+      })
             }
+  } catch (error) {
+    next(error)
         }
-    )
 }
+
 module.exports.add = (req, res) => {
     db.Users.create({
       name: req.body.name

@@ -10,14 +10,14 @@ const membershipController = require('../controllers/MembershipController.js')
 // GET
 router.get('/users', usersController.getAll)
 router.get('/users/:id', usersController.getOne)
-router.get('/users/:id/products', productsController.getAllByUser)
+router.get('/users/:id/products', usersController.getProducts)
 
 router.get('/products/:id', productsController.getOne)
 
 router.get('/groups', groupsController.getAll)
 router.get('/groups/:id', groupsController.getOne)
-router.get('/groups/:id/users', membershipController.getUsersByGroup)
-router.get('/groups/:id/products', productsController.getAllByGroup)
+router.get('/groups/:id/users', groupsController.getUsers)
+router.get('/groups/:id/products', groupsController.getProducts)
 
 // POST
 
