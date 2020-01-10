@@ -24,7 +24,7 @@ module.exports.getOne = (req, res) => {
 module.exports.getAll = (req, res) => {
   db.Users.findAll().then(
     (result) => {
-      if (result) {
+      if (result.length) {
         res.status(200).send({
           status: "success",
           result: result
@@ -89,8 +89,10 @@ module.exports.delete = (req, res) => {
   db.Users.destroy({
     where: { id: req.params.id }
   })
-    .then(users => {
-      res.json(users);
-    })
-    .catch(err => res.json(err));
+  .then(
+    res.status(204).send()
+  )
+  .catch(
+    err => res.json(err)
+  );
 };

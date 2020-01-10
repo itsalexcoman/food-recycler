@@ -24,7 +24,7 @@ module.exports.getOne = (req, res) => {
 module.exports.getAll = (req, res) => {
   db.Groups.findAll().then(
     (result) => {
-      if (result) {
+      if (result.length) {
         res.status(200).send({
           status: "success",
           result: result
@@ -126,8 +126,10 @@ module.exports.delete = (req, res) => {
   db.Groups.destroy({
     where: { id: req.params.id }
   })
-    .then(groups => {
-      res.json(groups);
-    })
-    .catch(err => res.json(err));
+  .then(
+    res.status(204).send()
+  )
+  .catch(
+    err => res.json(err)
+  );
 };

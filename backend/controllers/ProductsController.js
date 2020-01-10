@@ -40,11 +40,13 @@ module.exports.update = (req, res) => {
 };
 
 module.exports.delete = (req, res) => {
-  db.Groups.destroy({
+  db.Products.destroy({
     where: { id: req.params.id }
   })
-    .then(products => {
-      res.json(products);
-    })
-    .catch(err => res.json(err));
+  .then(
+    res.status(204).send()
+  )
+  .catch(
+    err => res.json(err)
+  );
 };
