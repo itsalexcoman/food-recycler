@@ -38,11 +38,11 @@ sequelize
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-db.Users = require('./Users')(sequelize, Sequelize);
 db.Buildings = require('./Buildings')(sequelize, Sequelize);
-db.Products = require('./Products')(sequelize, Sequelize);
+db.Users = require('./Users')(sequelize, Sequelize);
 db.Groups = require('./Groups')(sequelize, Sequelize);
 db.GroupMembership = require('./GroupMembership')(sequelize, Sequelize);
+db.Products = require('./Products')(sequelize, Sequelize);
 
 db.Users.belongsToMany(db.Groups, {
   through: db.GroupMembership,
