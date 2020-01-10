@@ -19,7 +19,7 @@ db.sequelize.sync({force:true}).then(async () => {
         admin_id: 1
     })
 
-    let groupMembership = await db.GroupMembership.create({
+    let membership = await db.Membership.create({
         user_id: user.id,
         group_id: group.id
     })
@@ -42,8 +42,14 @@ db.sequelize.sync({force:true}).then(async () => {
         building_code: 1,
         room_number: 100
     })    
+   
+    let group2 = await db.Groups.create({
+        name: "Grupul 2",
+        description: "Grupul veganilor",
+        admin_id: 1
+    })
 
-    let groupMembership2 = await db.GroupMembership.create({
+    let membership2 = await db.Membership.create({
         user_id: user2.id,
         group_id: group.id
     })
@@ -51,7 +57,7 @@ db.sequelize.sync({force:true}).then(async () => {
     let product2 = await db.Products.create({
         name: "Pate Bucegi",
         type: "Conserve",
-        user_id: 2,
+        user_id: 1,
         days_left: 5
     })
 
