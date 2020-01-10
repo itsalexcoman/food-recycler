@@ -7,7 +7,7 @@ const dbConfig = require('../config/db.json')
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
     dialect: 'mysql',
-    host: dbConfig.host
+    host: dbConfig.hostname
 })
 
 fs
@@ -44,10 +44,15 @@ db.Products = require('./Products')(sequelize, Sequelize);
 db.Groups = require('./Groups')(sequelize, Sequelize);
 db.GroupMembership = require('./GroupMembership')(sequelize, Sequelize);
 
-db.Users.belongsToMany(db.Products);
-db.Users.belongsToMany(db.Groups);
-db.Buildings.belongsToMany(db.Users);
-db.Users.belongsToMany(db.Groups, {through: db.GroupMembership});
-db.Groups.belongsToMany(db.Users, {through: db.GroupMembership});
+db.Users.belongsToMany(db.Groups, {
+  through: db.GroupMembership,
+  as: 'groups',
+  foreignKey: 'user_id'
+});
+db.Groups.belongsToMany(db.Users, {
+  through: db.GroupMembership,
+  as: 'users',
+  foreignKey: 'group_id'
+});
 
 module.exports = db;
