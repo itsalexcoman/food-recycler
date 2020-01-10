@@ -24,7 +24,7 @@ router.get('/groups/:id/products', groupsController.getProducts)
 router.post('/users', usersController.add)
 router.post('/products', productsController.add)
 router.post('/groups', groupsController.add)
-router.post('/groups/:id/users/:id', membershipController.add)
+router.post('/groups/:gid/users/:uid', membershipController.add)
 
 // PUT
 
@@ -37,6 +37,6 @@ router.put('/groups/:id', groupsController.update)
 router.delete('/users/:id', usersController.delete)
 router.delete('/products/:id', productsController.delete)
 router.delete('/groups/:id', groupsController.delete)
-router.delete('/groups/:id/users/:id', membershipController.delete)
+router.delete('/groups/:gid/users/:uid', membershipController.delete)
 
 module.exports = router
