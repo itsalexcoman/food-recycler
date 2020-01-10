@@ -23,11 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         building_code: {
             type: DataTypes.INTEGER.UNSIGNED,
-            allowNull: false,
-            references: {
-                model: 'Buildings',
-                key: 'code'
-            }
+            allowNull: false
         },
         room_number: {
             type: DataTypes.INTEGER.UNSIGNED,

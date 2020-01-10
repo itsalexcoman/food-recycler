@@ -17,10 +17,6 @@ module.exports = function(sequelize, DataTypes) {
         },
         admin_id: {
             type: DataTypes.INTEGER.UNSIGNED,
-            references: {
-                model: 'Users',
-                key: 'id'
-            },
             allowNull: false
         }
     });

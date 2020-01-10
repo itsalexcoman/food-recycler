@@ -17,14 +17,10 @@ module.exports = function(sequelize, DataTypes) {
         },
         user_id: {
             type: DataTypes.INTEGER.UNSIGNED,
-            allowNull: false,
-            references: {
-                model: 'Users',
-                key: 'id'
-            }
+            allowNull: false
         },
         days_left: {
-            type: DataTypes.INTEGER.UNSIGNED,
+            type: DataTypes.INTEGER,
             allowNull: false
         }
     });
