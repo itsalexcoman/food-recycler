@@ -1,8 +1,8 @@
 var db = require('../models/index');
 
-//module.exports.getUsersByGroup = (req, res) => {
-    //...
-//}
+module.exports.getUsersByGroup = (req, res) => {
+  console.log("MembershipController.getUsersByGroup()")
+}
 
 
 module.exports.add = (req, res) => {

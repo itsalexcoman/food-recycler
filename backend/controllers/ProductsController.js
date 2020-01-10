@@ -1,12 +1,12 @@
 var db = require('../models/index');
 
-//module.exports.getAllByUser = (req, res) => {
-   // ...
-//}
+module.exports.getAllByUser = (req, res) => {
+  console.log("ProductsController.getAllByUser()")
+}
 
-//module.exports.getAllByGroup = (req, res) => {
-   // ...
-//}
+module.exports.getAllByGroup = (req, res) => {
+  console.log("ProductsController.getAllByGroup()")
+}
 
 module.exports.getOne = (req, res) => {
     db.Products.getOne().then(
