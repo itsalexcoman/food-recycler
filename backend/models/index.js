@@ -48,10 +48,14 @@ db.Users.belongsTo(db.Buildings, {
   foreignKey: 'building_code'
 })
 db.Groups.belongsTo(db.Users, {
-  foreignKey: 'admin_id'
+  foreignKey: 'admin_id',
+  onUpdate: 'CASCADE',
+  onDelete: 'CASCADE'
 })
 db.Users.hasMany(db.Products, {
-  foreignKey: 'user_id'
+  foreignKey: 'user_id',
+  onUpdate: 'CASCADE',
+  onDelete: 'CASCADE'
 })
 
 db.Users.belongsToMany(db.Groups, {
