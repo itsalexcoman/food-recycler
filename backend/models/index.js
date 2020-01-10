@@ -44,6 +44,16 @@ db.Groups = require('./Groups')(sequelize, Sequelize);
 db.GroupMembership = require('./GroupMembership')(sequelize, Sequelize);
 db.Products = require('./Products')(sequelize, Sequelize);
 
+db.Users.belongsTo(db.Buildings, {
+  foreignKey: 'building_code'
+})
+db.Groups.belongsTo(db.Users, {
+  foreignKey: 'admin_id'
+})
+db.Products.belongsTo(db.Users, {
+  foreignKey: 'user_id'
+})
+
 db.Users.belongsToMany(db.Groups, {
   through: db.GroupMembership,
   as: 'groups',
