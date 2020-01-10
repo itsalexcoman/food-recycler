@@ -6,4 +6,4 @@ const port = 3001
 app.get('/', (req, res) => res.send('Welcome to Food Recycler!'))
 app.use('/api', api);
 
-app.listen(port, () => console.log(`Food Recycler started on port ${port}`))
+app.listen(port, () => console.log(`Food Recycler started on port ${port}\n`))
