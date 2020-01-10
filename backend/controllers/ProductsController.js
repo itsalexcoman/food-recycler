@@ -32,11 +32,17 @@ module.exports.add = (req, res) => {
 };
 
 module.exports.update = (req, res) => {
-  db.Products.update({ name: req.body.name }, { where: { id: req.params.id } })
-    .then(updatedProducts => {
-      res.json(updatedProducts);
+  db.Products.update(req.body, { where: {
+    id: req.params.id
+  }})
+  .then(
+    res.status(200).send({
+      status: "success"
     })
-    .catch(err => res.json(err));
+  )
+  .catch(
+    err => res.json(err)
+  );
 };
 
 module.exports.delete = (req, res) => {
