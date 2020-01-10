@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Users = sequelize.define("users", {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             unique: true,
             primaryKey: true,
@@ -9,23 +9,23 @@ module.exports = function(sequelize, DataTypes) {
             field: 'user_id'
         },
         email: {
-            type: DataTypes.VARCHAR,
+            type: DataTypes.STRING,
             allowNull: false,
             unique: true,
             field: 'user_email'
         },
         password: {
-            type: DataTypes.VARCHAR,
+            type: DataTypes.STRING,
             allowNull: false,
             field: 'user_password'
         },
         full_name: {
-            type: DataTypes.VARCHAR,
+            type: DataTypes.TEXT,
             allowNull: false,
             field: 'user_full_name'
         },
         building_code: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             field: 'user_building_code',
             references: {
@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         room_number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             field: 'user_room_number'
         }

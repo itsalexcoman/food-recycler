@@ -1,22 +1,22 @@
 module.exports = function(sequelize, DataTypes) {
     var Products = sequelize.define("products", {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             unique: true,
             primaryKey: true,
             autoIncrement: true
         },
         name: {
-            type: DataTypes.VARCHAR,
+            type: DataTypes.TEXT,
             allowNull: false
         },
         type: {
-            type: DataTypes.VARCHAR,
+            type: DataTypes.STRING,
             allowNull: false
         },
         user_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             references: {
                 model: 'Users',
@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
             }
         },
         days_left: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false
         }
     });

@@ -1,14 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
     var GroupMembership = sequelize.define("groupMembership", {
         id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             unique: true,
             primaryKey: true,
             autoIncrement: true,
         },
         user_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             references: {
                 model: 'Users',
                 key: 'id'
@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         group_id: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             references: {
                 model: 'Groups',
                 key: 'id'

@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
     var Buildings = sequelize.define("buildings", {
         code: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
             unique: true,
             primaryKey: true,
@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
             field: 'building_code'
         },
         name: {
-            type: DataTypes.VARCHAR,
+            type: DataTypes.TEXT,
             field: 'building_name'
         }
     });
