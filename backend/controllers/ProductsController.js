@@ -22,13 +22,13 @@ module.exports.getOne = (req, res) => {
 };
 
 module.exports.add = (req, res) => {
-  db.Products.create({
-    name: req.body.name
-  })
-    .then(res => {
-      res.json(res);
-    })
-    .catch(err => res.json(err));
+  db.Products.create(req.body)
+  .then(
+    result => { res.status(201).json(result) }
+  )
+  .catch(
+    err => res.json(err)
+  );
 };
 
 module.exports.update = (req, res) => {

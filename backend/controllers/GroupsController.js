@@ -105,13 +105,13 @@ module.exports.getProducts = async (req, res, next) => {
 }
 
 module.exports.add = (req, res) => {
-  db.Groups.create({
-    name: req.body.name
-  })
-    .then(res => {
-      res.json(res);
-    })
-    .catch(err => res.json(err));
+  db.Groups.create(req.body)
+  .then(
+    result => { res.status(201).json(result) }
+  )
+  .catch(
+    err => res.json(err)
+  );
 };
 
 module.exports.update = (req, res) => {

@@ -1,14 +1,17 @@
 var db = require('../models/index');
 
 module.exports.add = (req, res) => {
-  db.Membership.create({
-    usersId: req.body.usersId,
-    groupsId: req.body.groupsId
-  })
-  .then(group_memberships => {
-    res.json(group_memberships);
-  })
-  .catch(err => res.json(err));
+  const newMembership = {
+    group_id: req.params.gid,
+    user_id: req.params.uid
+  };  
+  db.Membership.create(newMembership)
+  .then(
+    result => { res.status(201).json(result) }
+  )
+  .catch(
+    err => res.json(err)
+  );
 };
 
 module.exports.delete = (req, res) => {
