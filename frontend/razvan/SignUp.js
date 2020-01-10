@@ -61,58 +61,69 @@ export default function SignUp() {
         </Typography>
         <form className={classes.form} noValidate>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="full name"
+                name="fullName"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="fullName"
+                label="Full Name"
                 autoFocus
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
+            
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
+                id="email_register"
+                label="Email"
                 name="email"
                 autoComplete="email"
               />
             </Grid>
+            
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
+                id="password_register"
                 label="Password"
+                type ="password"
+                name="password"
+                autoComplete="password"
+              />
+            </Grid>
+            
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="Confirm Password"
+                label="Confirm Password"
                 type="password"
-                id="password"
+                id="password_confirm"
                 autoComplete="current-password"
               />
             </Grid>
+            
             <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="Building"
+                label="Building"
+                id="building_name"
+                autoComplete="Bulding"
               />
             </Grid>
+            
           </Grid>
           <Button
             type="submit"
