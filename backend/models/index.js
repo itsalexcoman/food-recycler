@@ -41,7 +41,7 @@ db.Sequelize = Sequelize;
 db.Buildings = require('./Buildings')(sequelize, Sequelize);
 db.Users = require('./Users')(sequelize, Sequelize);
 db.Groups = require('./Groups')(sequelize, Sequelize);
-db.GroupMembership = require('./GroupMembership')(sequelize, Sequelize);
+db.Membership = require('./Membership')(sequelize, Sequelize);
 db.Products = require('./Products')(sequelize, Sequelize);
 
 db.Users.belongsTo(db.Buildings, {
@@ -55,12 +55,12 @@ db.Users.hasMany(db.Products, {
 })
 
 db.Users.belongsToMany(db.Groups, {
-  through: db.GroupMembership,
+  through: db.Membership,
   as: 'groups',
   foreignKey: 'user_id'
 });
 db.Groups.belongsToMany(db.Users, {
-  through: db.GroupMembership,
+  through: db.Membership,
   as: 'users',
   foreignKey: 'group_id'
 });

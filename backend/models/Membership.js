@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var GroupMembership = sequelize.define("groupMembership", {
+    var Membership = sequelize.define("membership", {
         id: {
             type: DataTypes.INTEGER.UNSIGNED,
             allowNull: false,
@@ -26,5 +26,5 @@ module.exports = function(sequelize, DataTypes) {
     }, {
         tableName: "membership"
     });
-    return GroupMembership;
+    return Membership;
 }

@@ -1,12 +1,7 @@
 var db = require('../models/index');
 
-module.exports.getUsersByGroup = (req, res) => {
-  console.log("MembershipController.getUsersByGroup()")
-}
-
-
 module.exports.add = (req, res) => {
-    db.GroupMembership.create({
+    db.Membership.create({
       usersId: req.body.usersId,
       groupsId: req.body.groupsId
     })
@@ -17,7 +12,7 @@ module.exports.add = (req, res) => {
   };
 
 module.exports.remove = (req, res) => {
-    db.GroupMembership.destroy({
+    db.Membership.destroy({
       where: { id: req.params.id }
     }).then(group_membership => {
       res.json(group_membership);
