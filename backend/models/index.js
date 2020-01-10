@@ -50,7 +50,7 @@ db.Users.belongsTo(db.Buildings, {
 db.Groups.belongsTo(db.Users, {
   foreignKey: 'admin_id'
 })
-db.Products.belongsTo(db.Users, {
+db.Users.hasMany(db.Products, {
   foreignKey: 'user_id'
 })
 
