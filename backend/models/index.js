@@ -7,7 +7,8 @@ const dbConfig = require('../config/db.json')
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, {
     dialect: 'mysql',
-    host: dbConfig.hostname
+    host: dbConfig.hostname,
+    logging: false
 })
 
 fs
