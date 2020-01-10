@@ -6,3 +6,4 @@ touch ./docs/dev-tools/dbInit.sql
 echo $SQL > ./docs/dev-tools/dbInit.sql
 sudo mysql -u root < ./docs/dev-tools/dbInit.sql
 rm ./docs/dev-tools/dbInit.sql
+node ./docs/dev-tools/createdb.js
