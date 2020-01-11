@@ -18,6 +18,21 @@ npm run init
 
 **NOTE:** The database configuration file (./backend/config/db.json) can be modified to your liking.
 
+### Usage
+#### Production mode
+``` sh
+npm start
+```
+#### Development mode
+``` sh
+# Front-end & back-end
+npm run dev
+# Only back-end
+npm run server
+# Only front-end
+npm run client
+```
+
 ### Useful Links
 - [Documentation](https://github.com/itsalexcoman/food-recycler/blob/master/docs/)
 - [Changelog](https://github.com/itsalexcoman/food-recycler/blob/master/docs/CHANGELOG.md)
