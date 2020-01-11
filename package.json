@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "init": "./docs/dev-tools/install.sh",
+    "start": "cd frontend && npm run build && cd .. && node server.js",
     "server": "nodemon server.js",
     "client": "cd frontend && npm start",
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\""
@@ -21,6 +22,7 @@
   "homepage": "https://github.com/itsalexcoman/food-recycler#readme",
   "dependencies": {
     "colors": "^1.4.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "mysql2": "^2.0.2",
     "sequelize": "^5.21.3"
