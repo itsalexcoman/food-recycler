@@ -16,7 +16,9 @@ cd food-recycler
 npm run init
 ```
 
-**NOTE:** The database configuration file (./backend/config/db.json) can be modified to your liking.
+The database configuration file (./backend/config/db.json) can be modified to your liking.
+
+**NOTE:** Running the `init` script will require sudo rights.
 
 ### Usage
 #### Production mode
