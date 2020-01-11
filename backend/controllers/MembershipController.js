@@ -1,5 +1,4 @@
 var db = require('../models/index');
-var colors = require('colors');
 
 module.exports.add = (req, res) => {
   const newMembership = {

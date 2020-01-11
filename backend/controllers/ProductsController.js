@@ -1,5 +1,4 @@
 var db = require('../models/index');
-var colors = require('colors');
 
 module.exports.getOne = (req, res) => {
   db.Products.findByPk(req.params.id)
