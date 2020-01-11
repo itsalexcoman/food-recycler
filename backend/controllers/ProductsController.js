@@ -1,17 +1,18 @@
 var db = require('../models/index');
+var colors = require('colors');
 
 module.exports.getOne = (req, res) => {
   db.Products.findByPk(req.params.id)
     .then(
       (result) => {
         if (result) {
-          console.log("GET: Product fetched from database successfully.")
+          console.log("[" + "GET".green + "] Product fetched from database successfully.")
           res.status(200).send({
             status: "success",
             result: result
           });
         } else {
-          console.log("GET: Product not found.")
+          console.log("[" + "GET".green + "] Product not found.")
           res.status(404).send({
             status: "not found"
           })
@@ -20,7 +21,7 @@ module.exports.getOne = (req, res) => {
     )
     .catch(
       () => {
-        console.log("GET: Product fetch created server error.")
+        console.log("[" + "GET".green + "] Product fetch created server error.")
         res.status(500).send({
           status: "error"
         })
@@ -32,13 +33,13 @@ module.exports.add = (req, res) => {
   db.Products.create(req.body)
     .then(
       (result) => {
-        console.log("POST: Product added successfully.")
+        console.log("[" + "POST".yellow + "] Product added successfully.")
         res.status(201).json(result)
       }
     )
     .catch(
       (err) => {
-        console.log("POST: Adding product created server error.")
+        console.log("[" + "POST".yellow + "] Adding product created server error.")
         res.json(err)
       }
     );
@@ -52,7 +53,7 @@ module.exports.update = (req, res) => {
   })
     .then(
       () => {
-        console.log("PUT: Product updated successfully.")
+        console.log("[" + "PUT".blue + "] Product updated successfully.")
         res.status(200).send({
           status: "success"
         })
@@ -60,7 +61,7 @@ module.exports.update = (req, res) => {
     )
     .catch(
       (err) => {
-        console.log("PUT: Updating product created server error.")
+        console.log("[" + "PUT".blue + "] Updating product created server error.")
         res.json(err)
       }
     );
@@ -72,13 +73,13 @@ module.exports.delete = (req, res) => {
   })
     .then(
       () => {
-        console.log("DELETE: Product deleted successfully.")
+        console.log("[" + "DEL".red + "] Product deleted successfully.")
         res.status(204).send()
       }
     )
     .catch(
       (err) => {
-        console.log("DELETE: Deleting product created server error.")
+        console.log("[" + "DEL".red + "] Deleting product created server error.")
         res.json(err)
       }
     );

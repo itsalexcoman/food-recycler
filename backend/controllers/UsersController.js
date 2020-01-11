@@ -1,17 +1,18 @@
 var db = require('../models/index');
+var colors = require('colors');
 
 module.exports.getOne = (req, res) => {
   db.Users.findByPk(req.params.id)
     .then(
       (result) => {
         if (result) {
-          console.log("GET: User fetched from database successfully.")
+          console.log("[" + "GET".green + "] User fetched from database successfully.")
           res.status(200).send({
             status: "success",
             result: result
           })
         } else {
-          console.log("GET: User not found in database.")
+          console.log("[" + "GET".green + "] User not found in database.")
           res.status(404).send({
             status: "not found"
           })
@@ -20,7 +21,7 @@ module.exports.getOne = (req, res) => {
     )
     .catch(
       () => {
-        console.log("GET: User fetch created server error.")
+        console.log("[" + "GET".green + "] User fetch created server error.")
         res.status(500).send({
           status: "error"
         })
@@ -33,13 +34,13 @@ module.exports.getAll = (req, res) => {
     .then(
       (result) => {
         if (result.length) {
-          console.log("GET: Users fetched from database successfully.")
+          console.log("[" + "GET".green + "] Users fetched from database successfully.")
           res.status(200).send({
             status: "success",
             result: result
           })
         } else {
-          console.log("GET: No users in database.")
+          console.log("[" + "GET".green + "] No users in database.")
           res.status(404).send({
             status: "not found"
           })
@@ -48,7 +49,7 @@ module.exports.getAll = (req, res) => {
     )
     .catch(
       () => {
-        console.log("GET: User fetch created server error.")
+        console.log("[" + "GET".green + "] User fetch created server error.")
         res.status(500).send({
           status: "error"
         })
@@ -62,25 +63,25 @@ module.exports.getProducts = async (req, res, next) => {
     if (currentUser) {
       const products = await currentUser.getProducts({ raw: true });
       if (products.length) {
-        console.log("GET: User's products fetched from database successfully.")
+        console.log("[" + "GET".green + "] User's products fetched from database successfully.")
         res.status(200).send({
           status: "success",
           result: products
         })
       } else {
-        console.log("GET: User has no products.")
+        console.log("[" + "GET".green + "] User has no products.")
         res.status(404).send({
           status: "not found"
         })
       }
     } else {
-      console.log("GET: User does not exist.")
+      console.log("[" + "GET".green + "] User does not exist.")
       res.status(400).send({
         status: "bad request: user not found"
       })
     }
   } catch (error) {
-    console.log("GET: User products fetch created server error.")
+    console.log("[" + "GET".green + "] User products fetch created server error.")
     next(error)
   }
 };
@@ -89,13 +90,13 @@ module.exports.add = (req, res) => {
   db.Users.create(req.body)
     .then(
       (result) => {
-        console.log("POST: User added successfully.")
+        console.log("[" + "POST".yellow + "] User added successfully.")
         res.status(201).json(result)
       }
     )
     .catch(
       (err) => {
-        console.log("POST: Adding user created server error.")
+        console.log("[" + "POST".yellow + "] Adding user created server error.")
         res.json(err)
       }
     );
@@ -109,7 +110,7 @@ module.exports.update = (req, res) => {
   })
     .then(
       () => {
-        console.log("PUT: User updated successfully.")
+        console.log("[" + "PUT".blue + "] User updated successfully.")
         res.status(200).send({
           status: "success"
         })
@@ -117,7 +118,7 @@ module.exports.update = (req, res) => {
     )
     .catch(
       (err) => {
-        console.log("PUT: Updating user created server error.")
+        console.log("[" + "PUT".blue + "] Updating user created server error.")
         res.json(err)
       }
     );
@@ -129,13 +130,13 @@ module.exports.delete = (req, res) => {
   })
     .then(
       () => {
-        console.log("DELETE: User deleted successfully.")
+        console.log("[" + "DEL".red + "] User deleted successfully.")
         res.status(204).send()
       }
     )
     .catch(
       (err) => {
-        console.log("DELETE: Deleting user created server error.")
+        console.log("[" + "DEL".red + "] Deleting user created server error.")
         res.json(err)
       }
     );

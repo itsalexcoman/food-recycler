@@ -1,4 +1,5 @@
 var db = require('../models/index');
+var colors = require('colors');
 
 module.exports.add = (req, res) => {
   const newMembership = {
@@ -9,13 +10,13 @@ module.exports.add = (req, res) => {
   db.Membership.create(newMembership)
     .then(
       (result) => {
-        console.log("POST: Membership added successfully.")
+        console.log("[" + "POST".yellow + "] Membership added successfully.")
         res.status(201).json(result)
       }
     )
     .catch(
       (err) => {
-        console.log("POST: Adding membership created server error.")
+        console.log("[" + "POST".yellow + "] Adding membership created server error.")
         res.json(err)
       }
     );
@@ -30,13 +31,13 @@ module.exports.delete = (req, res) => {
   })
     .then(
       () => {
-        console.log("DELETE: Membership deleted successfully.")
+        console.log("[" + "DEL".red + "] Membership deleted successfully.")
         res.status(204).send()
       }
     )
     .catch(
       (err) => {
-        console.log("DELETE: Deleting membership created server error.")
+        console.log("[" + "DEL".red + "] Deleting membership created server error.")
         res.json(err)
       }
     );

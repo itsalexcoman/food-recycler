@@ -1,17 +1,18 @@
 var db = require('../models/index');
+var colors = require('colors');
 
 module.exports.getOne = (req, res) => {
   db.Groups.findByPk(req.params.id)
     .then(
       (result) => {
         if (result) {
-          console.log("GET: Group fetched from database successfully.")
+          console.log("[" + "GET".green + "] Group fetched from database successfully.")
           res.status(200).send({
             status: "success",
             result: result
           })
         } else {
-          console.log("GET: Group not found.")
+          console.log("[" + "GET".green + "] Group not found.")
           res.status(404).send({
             status: "not found"
           })
@@ -20,7 +21,7 @@ module.exports.getOne = (req, res) => {
     )
     .catch(
       () => {
-        console.log("GET: Group fetch created server error.")
+        console.log("[" + "GET".green + "] Group fetch created server error.")
         res.status(500).send({
           status: "error"
         })
@@ -33,13 +34,13 @@ module.exports.getAll = (req, res) => {
     .then(
       (result) => {
         if (result.length) {
-          console.log("GET: Groups fetched from database successfully.")
+          console.log("[" + "GET".green + "] Groups fetched from database successfully.")
           res.status(200).send({
             status: "success",
             result: result
           })
         } else {
-          console.log("GET: No groups in database.")
+          console.log("[" + "GET".green + "] No groups in database.")
           res.status(404).send({
             status: "not found"
           })
@@ -48,7 +49,7 @@ module.exports.getAll = (req, res) => {
     )
     .catch(
       () => {
-        console.log("GET: Groups fetch created server error.")
+        console.log("[" + "GET".green + "] Groups fetch created server error.")
         res.status(500).send({
           status: "error"
         })
@@ -62,25 +63,25 @@ module.exports.getUsers = async (req, res, next) => {
     if (currentGroup) {
       const users = await currentGroup.getUsers({ raw: true });
       if (users.length) {
-        console.log("GET: Group members fetched successfully.");
+        console.log("[" + "GET".green + "] Group members fetched successfully.");
         res.status(200).send({
           status: "success",
           result: users
         })
       } else {
-        console.log("GET: No users in group.");
+        console.log("[" + "GET".green + "] No users in group.");
         res.status(404).send({
           status: "not found"
         })
       }
     } else {
-      console.log("GET: Group not found.");
+      console.log("[" + "GET".green + "] Group not found.");
       res.status(400).send({
         status: "bad request: group not found"
       })
     }
   } catch (error) {
-    console.log("GET: Group members fetch created server error.");
+    console.log("[" + "GET".green + "] Group members fetch created server error.");
     next(error)
   }
 }
@@ -103,25 +104,25 @@ module.exports.getProducts = async (req, res, next) => {
             }
           }
         }
-        console.log("GET: Group products fetched successfully.");
+        console.log("[" + "GET".green + "] Group products fetched successfully.");
         res.status(200).send({
           status: "success",
           result: result
         })
       } else {
-        console.log("GET: No users in group.");
+        console.log("[" + "GET".green + "] No users in group.");
         res.status(404).send({
           status: "users not found"
         })
       }
     } else {
-      console.log("GET: Group not found.");
+      console.log("[" + "GET".green + "] Group not found.");
       res.status(400).send({
         status: "bad request: group not found"
       })
     }
   } catch (error) {
-    console.log("GET: Group products fetch created server error.");
+    console.log("[" + "GET".green + "] Group products fetch created server error.");
     next(error)
   }
 }
@@ -130,13 +131,13 @@ module.exports.add = (req, res) => {
   db.Groups.create(req.body)
     .then(
       (result) => {
-        console.log("POST: Group added successfully.")
+        console.log("[" + "POST".yellow + "] Group added successfully.")
         res.status(201).json(result)
       }
     )
     .catch(
       (err) => {
-        console.log("POST: Adding group created server error.")
+        console.log("[" + "POST".yellow + "] Adding group created server error.")
         res.json(err)
       }
     );
@@ -150,7 +151,7 @@ module.exports.update = (req, res) => {
   })
     .then(
       () => {
-        console.log("PUT: Group updated successfully.")
+        console.log("[" + "PUT".blue + "] Group updated successfully.")
         res.status(200).send({
           status: "success"
         })
@@ -158,7 +159,7 @@ module.exports.update = (req, res) => {
     )
     .catch(
       (err) => {
-        console.log("PUT: Updating group created server error.")
+        console.log("[" + "PUT".blue + "] Updating group created server error.")
         res.json(err)
       }
     );
@@ -170,13 +171,13 @@ module.exports.delete = (req, res) => {
   })
     .then(
       () => {
-        console.log("DELETE: Group deleted successfully.")
+        console.log("[" + "DEL".red + "] Group deleted successfully.")
         res.status(204).send()
       }
     )
     .catch(
       (err) => {
-        console.log("DELETE: Deleting group created server error.")
+        console.log("[" + "DEL".red + "] Deleting group created server error.")
         res.json(err)
       }
     );
