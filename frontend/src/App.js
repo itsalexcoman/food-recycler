@@ -8,21 +8,22 @@ import Community from './containers/Community'
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <div>
-          <Header />
-            <div style={{padding:'10px'}}>
-              <Route path="/" exact render={
-                  (props) => <Fridge type="Product" {...props} />
-                } />
-              <Route path="/community/" exact render={
-                  (props) => <Community {...props} />
-                } />
-            </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <div className="App-main">
+          <Route path="/" exact render={
+            (props) => <Fridge type="Product" {...props} />
+          } />
+          <Route path="/community/" exact render={
+            (props) => <Community {...props} />
+          } />
+          <Route path="/users/" exact render={
+            (props) => <Fridge type="User" {...props} />
+          } />
         </div>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

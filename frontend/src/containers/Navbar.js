@@ -19,8 +19,8 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props)
 
-    let pages = ['/', '/community'];
-    let labels = ['My Fridge', 'Community']
+    let pages = ['/', '/community', '/users'];
+    let labels = ['My Fridge', 'Community', 'Users']
 
     let pathname = this.props.location.pathname
     pathname = pathname[pathname.length - 1] !== '/' ? pathname : pathname.substr(0, pathname.length - 1)
@@ -33,7 +33,6 @@ class Navbar extends React.Component {
       labels: labels
     };
   }
-
 
   handleChange = (event, value) => {
     this.setState({ value });
@@ -49,7 +48,7 @@ class Navbar extends React.Component {
         <Tabs value={value}
           onChange={this.handleChange}
           classes={{ indicator: classes.navbar }}> {
-            this.state.labels.map((element) => < Tab label={element} />)
+            this.state.labels.map((element) => <Tab label={element} />)
           }
         </Tabs>
       </div>
