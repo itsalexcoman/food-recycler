@@ -5,7 +5,7 @@ import axios from 'axios'
 
 import User from '../items/User'
 
-const API_BASE_URL = 'https://127.0.0.1:3001/api'
+const API_BASE_URL = 'http://localhost:3001/api'
 
 class UserList extends Component {
     constructor(props) {
@@ -15,9 +15,9 @@ class UserList extends Component {
       }
     }
 
-    componentDidMount() {
-      fetch(API_BASE_URL + '/users').then((result) => {
-        this.setState({users: result.data.results})
+    async componentDidMount() {
+      axios.get(API_BASE_URL + '/users').then((result) => {
+        this.setState({users: result.data.result})
       })
     }
 
