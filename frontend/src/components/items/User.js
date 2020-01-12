@@ -20,9 +20,8 @@ class User extends Component {
                 <ListItemText>{profile.full_name}</ListItemText>
                 <br />
                 <Button
-                    target="_blank"
-                    label="Profile Link"
-                    secondary={true}
+                    color="primary"
+                    variant="contained"
                 >Profile</Button>
             </ListItem>
         )

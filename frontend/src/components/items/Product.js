@@ -22,9 +22,6 @@ class Product extends Component {
                 Days Left: {product.days_left}
             </ListItemText>
             <Button
-              target="_blank"
-              label="claim_button"
-              secondary={true}
               color="primary"
               variant="contained"
             >Claim</Button>
