@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import ListItem from '@material-ui/core/ListItem';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
+import FoodIcon from '@material-ui/icons/Fastfood'
 
 class Product extends Component {
     render() {
@@ -13,13 +13,11 @@ class Product extends Component {
       return (
         <ListItem>
             <ListItemAvatar>
-                {
-                    <Avatar src="product_icon.png" style={{width: 70, height: 60}}/>
-                }
+              <FoodIcon color="primary" />
             </ListItemAvatar>
-            <ListItemText classes="multiline">
+            <ListItemText className="multiline">
                 <strong>{product.name}</strong> <br/>
-                Days Left: {product.days_left}
+                Days until expired: {product.days_left}
             </ListItemText>
             <Button
               color="primary"

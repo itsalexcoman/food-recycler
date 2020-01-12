@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 import ListItem from '@material-ui/core/ListItem';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
+import PersonIcon from '@material-ui/icons/Person';
 
 class User extends Component {
     render() {
@@ -13,16 +13,14 @@ class User extends Component {
         return (
             <ListItem>
                 <ListItemAvatar>
-                    {
-                        <Avatar src="nopic.png" />
-                    }
+                    <PersonIcon color="primary" />
                 </ListItemAvatar>
                 <ListItemText>{profile.full_name}</ListItemText>
                 <br />
                 <Button
                     color="primary"
                     variant="contained"
-                >Profile</Button>
+                >Fridge</Button>
             </ListItem>
         )
     }
