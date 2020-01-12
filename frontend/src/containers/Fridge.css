@@ -1,0 +1,13 @@
+.Fridge {
+    width: 100%;
+}
+
+.Fridge-master {
+    width: 35%;
+    float: left;
+}
+
+.Fridge-detail {
+    width: 65%;
+    float: right;
+}

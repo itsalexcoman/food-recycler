@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Product.css'
 
 import ListItem from '@material-ui/core/ListItem';
 import Avatar from '@material-ui/core/Avatar';

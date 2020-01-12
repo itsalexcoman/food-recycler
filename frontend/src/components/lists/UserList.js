@@ -8,29 +8,29 @@ import User from '../items/User'
 const API_BASE_URL = 'http://localhost:3001/api'
 
 class UserList extends Component {
-    constructor(props) {
-      super(props) 
-      this.state = {
-        users: []
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      users: []
     }
+  }
 
-    async componentDidMount() {
-      axios.get(API_BASE_URL + '/users').then((result) => {
-        this.setState({users: result.data.result})
-      })
-    }
+  async componentDidMount() {
+    axios.get(API_BASE_URL + '/users').then((result) => {
+      this.setState({ users: result.data.result })
+    })
+  }
 
-    render() {
-      return (
-        <div>
+  render() {
+    return (
+      <div className={this.props.className}>
         <h3>Users</h3>
         <List>
           {this.state.users.map((user) => <User key={user.id} profile={user} />)}
         </List>
-        </div>
-      )
-    }
+      </div>
+    )
   }
+}
 
 export default UserList;
