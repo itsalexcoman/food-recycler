@@ -1,10 +1,15 @@
+.Profile {
+    position: fixed;
+    height: 100%;
+}
+
 .Profile li {
     display: flex;
     flex-direction: column;
 }
 
 .Profile-pic {
-    padding: 5vh 0;
+    padding: 10vh 0;
 }
 
 .Profile-buttons button {

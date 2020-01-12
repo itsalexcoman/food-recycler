@@ -1,31 +1,23 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add'
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 
-const useStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
+import axios from 'axios';
+
+const API_BASE_URL = (process.env.REACT_APP_API_BASEURL) ? process.env.REACT_APP_API_BASEURL : 'http://localhost:3001/api';
 
 export default function AddProduct() {
     const [open, setOpen] = React.useState(false);
+    const [type, setType] = React.useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -34,22 +26,30 @@ export default function AddProduct() {
     const handleClose = () => {
         setOpen(false);
     };
-    
-    const classes = useStyles();
-  const [type, setType] = React.useState('');
 
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
+    const handleChange = (e) => {
+        setType(e.target.value);
+    };
 
-
-  const handleChange = event => {
-    setType(event.target.value);
-  };
+    const handleAdd = () => {
+        axios.post(API_BASE_URL + '/products', {
+            name: 'My Product',
+            type: 'Food',
+            user_id: 2,
+            days_left: 3
+        })
+            .then(() => {
+                setOpen(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
 
     return (
         <div>
-            <Button color="secondary" variant="contained" aria-label="add" startIcon={<AddIcon />} onClick={handleClickOpen}>
-            Add Product
+            <Button color="secondary" variant="outlined" aria-label="add" startIcon={<AddIcon />} onClick={handleClickOpen}>
+                Add Product
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Add Product</DialogTitle>
@@ -61,26 +61,21 @@ export default function AddProduct() {
                         label="Name"
                         fullWidth
                     />
-                    <FormControl className={classes.formControl}>
+                    <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">Category</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={type}
-                            onChange={handleChange}
-                        >
-                            <MenuItem>Conserve</MenuItem>
-                            <MenuItem>Carne</MenuItem>
-                            <MenuItem>Fruncte</MenuItem>
-                            <MenuItem>Legume</MenuItem>
-                            <MenuItem>Desert</MenuItem>
+                            onChange={handleChange}>
+                            <MenuItem value="Food">Food</MenuItem>
+                            <MenuItem value="Drink">Drink</MenuItem>
                         </Select>
                     </FormControl>
                     <TextField
-                        autoFocus
                         margin="dense"
                         id="days_left"
-                        label="Days until expire"
+                        label="Days until expired"
                         type="number"
                         fullWidth
                     />
@@ -89,7 +84,7 @@ export default function AddProduct() {
                     <Button onClick={handleClose} color="primary">
                         Cancel
                     </Button>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleAdd} color="primary">
                         Add
                     </Button>
                 </DialogActions>

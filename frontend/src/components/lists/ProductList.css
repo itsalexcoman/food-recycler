@@ -1,0 +1,10 @@
+.Product-container ul li {
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
+    margin: 1vh 0;
+}
+
+.Product-add button {
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
