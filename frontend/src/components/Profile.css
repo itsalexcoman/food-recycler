@@ -1,0 +1,16 @@
+.Profile li {
+    display: flex;
+    flex-direction: column;
+}
+
+.Profile-pic {
+    padding: 5vh 0;
+}
+
+.Profile-buttons button {
+    margin: 5px;
+}
+
+.Profile-info {
+    text-align: center;
+}
