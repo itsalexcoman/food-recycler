@@ -14,7 +14,7 @@ function App() {
           <Header />
             <div style={{padding:'10px'}}>
               <Route path="/" exact render={
-                  (props) => <Fridge type="User" {...props} />
+                  (props) => <Fridge type="Product" {...props} />
                 } />
               <Route path="/community/" exact render={
                   (props) => <Community {...props} />
