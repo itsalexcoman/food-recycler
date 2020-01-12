@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+
 import List from '@material-ui/core/List';
+import User from '../items/User';
 
-import axios from 'axios'
-
-import User from '../items/User'
-
-const API_BASE_URL = 'http://localhost:3001/api'
+const API_BASE_URL = (process.env.REACT_APP_API_BASEURL) ? process.env.REACT_APP_API_BASEURL : 'http://localhost:3001/api';
 
 class UserList extends Component {
   constructor(props) {
