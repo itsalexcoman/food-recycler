@@ -19,7 +19,7 @@ class Navbar extends React.Component {
   constructor(props) {
     super(props)
 
-    let pages = ['/', '/community', '/users'];
+    let pages = ['', '/community', '/users'];
     let labels = ['My Fridge', 'Community', 'Users']
 
     let pathname = this.props.location.pathname

@@ -28,7 +28,7 @@ class Group extends Component {
     return (
       <ListItem>
         <ListItemAvatar>
-        <GroupIcon style={{ fontSize: 50 }} />
+        <GroupIcon style={{ fontSize: 50, color: "#FFD700" }} />
       </ListItemAvatar>
       <ListItemText className="multiline">
         <strong>{this.state.group.name}</strong> <br />
