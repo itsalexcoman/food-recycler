@@ -1,3 +1,7 @@
+.Group-container {
+    margin: 7.5vh 0;
+}
+
 .Group-container ul {
     display: flex;
     text-align: center;
@@ -6,4 +10,6 @@
 .Group-container ul li {
     flex-direction: column;
     text-align: center;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 2px #ccc;
 }
