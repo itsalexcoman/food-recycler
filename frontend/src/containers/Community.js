@@ -5,7 +5,7 @@ class Community extends Component {
   render() {
     return (
       <div>
-        <h1>I am Community</h1>
+        <h1>Community</h1>
         <GroupList title="Groups You Manage" />
         <GroupList title="Groups You're In" />
       </div>

@@ -1,0 +1,9 @@
+.Group-container ul {
+    display: flex;
+    text-align: center;
+}
+
+.Group-container ul li {
+    flex-direction: column;
+    text-align: center;
+}
