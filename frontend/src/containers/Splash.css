@@ -1,0 +1,28 @@
+.Splash-logo {
+    height: 20vmin;
+    pointer-events: none;
+}
+
+.Splash-header {
+    background-color: #fffef5;
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: black;
+}
+
+.Splash-login {
+    background-color: #fffef5;
+    min-height: 25vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.Splash-login Button {
+    margin: 1rem;
+}
