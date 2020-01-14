@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -6,15 +6,12 @@ import { Tab, Tabs } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
   navbar: {
     height: 0
   }
 });
 
-class Navbar extends React.Component {
+class Navbar extends Component {
   constructor(props) {
     super(props)
 
@@ -43,14 +40,13 @@ class Navbar extends React.Component {
     const { value } = this.state;
 
     return (
-      <div className={classes.root}>
         <Tabs value={value}
           onChange={this.handleChange}
+          indicatorColor="secondary"
           classes={{ indicator: classes.navbar }}> {
             this.state.labels.map((element) => <Tab label={element} />)
           }
         </Tabs>
-      </div>
     );
   }
 }

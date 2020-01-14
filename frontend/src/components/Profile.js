@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Avatar, Button, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
-import './Profile.css'
-
-const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
+import { Avatar, Button, Grid, Typography } from '@material-ui/core';
 
 class Profile extends Component {
-  divClasses;
   constructor(props) {
     super(props)
-    this.divClasses = props.className + " Profile";
 
     this.state = {
       user: {}
@@ -17,37 +12,37 @@ class Profile extends Component {
   }
 
   async componentDidMount() {
-    axios.get(API_BASE_URL + '/users/2').then((result) => {
+    axios.get(process.env.REACT_APP_API_BASEURL + '/users/2').then((result) => {
       this.setState({ user: result.data.result })
     })
   }
 
   render() {
     return (
-      <div className={this.divClasses}>
-        <ListItem>
-          <ListItemAvatar className="Profile-pic">
-            <Avatar style={{ width: 200, height: 200 }} />
-          </ListItemAvatar>
-          <h2>
-            <strong>{this.state.user.full_name}</strong> <br />
-          </h2>
-          <div className="Profile-buttons">
-            <Button
-              color="primary"
-              variant="contained"
-            >Users</Button>
-            <Button
-              color="primary"
-              variant="contained"
-            >Products</Button>
-          </div>
-          <ListItemText className="multiline Profile-info">
-            Email: {this.state.user.email} <br />
-            Room Number: {this.state.user.room_number}
-          </ListItemText>
-        </ListItem>
-      </div>
+      <Grid container direction="column" justify="center" alignItems="center">
+        <Grid item>
+          <Avatar style={{ width: 200, height: 200, margin: 10 }} />
+        </Grid>
+        <Grid item>
+          <Typography variant="h5">{this.state.user.full_name}</Typography>
+        </Grid>
+        <Grid item>
+          <Grid container>
+            <Grid item>
+              <Button color="primary" variant="contained" style={{margin: 10}}>Users</Button>
+            </Grid>
+            <Grid item>
+              <Button color="primary" variant="contained" style={{margin: 10}}>Products</Button>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item>
+          <Typography variant="body1">Email: {this.state.user.email}</Typography>
+        </Grid>
+        <Grid item>
+          <Typography variant="body1">Room Number: {this.state.user.room_number}</Typography>
+        </Grid>
+      </Grid>
     );
   }
 }

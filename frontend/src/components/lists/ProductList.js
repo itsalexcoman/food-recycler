@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { List } from '@material-ui/core';
+import { List, Typography } from '@material-ui/core';
 import { Product, AddProduct } from '..';
 import './ProductList.css'
-
-const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
 
 class ProductList extends Component {
   constructor(props) {
@@ -19,7 +17,7 @@ class ProductList extends Component {
   }
 
   async componentDidMount() {
-    axios.get(API_BASE_URL + '/users/' + this.state.user + '/products').then((result) => {
+    axios.get(process.env.REACT_APP_API_BASEURL + '/users/' + this.state.user + '/products').then((result) => {
       this.setState({ products: result.data.result })
     })
   }
@@ -27,7 +25,7 @@ class ProductList extends Component {
   render() {
     return (
       <div className={this.divClasses}>
-        <h2>Products</h2>
+        <Typography variant="h4">Products</Typography>
         <List>
           {this.state.products.map((product) => <Product key={product.id} product={product} />)}
         </List>

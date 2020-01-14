@@ -4,8 +4,6 @@ import axios from 'axios';
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
-
 export default function AddProduct() {
     const [open, setOpen] = React.useState(false);
     const [type, setType] = React.useState(false);
@@ -23,7 +21,7 @@ export default function AddProduct() {
     };
 
     const handleAdd = () => {
-        axios.post(API_BASE_URL + '/products', {
+        axios.post(process.env.REACT_APP_API_BASEURL + '/products', {
             name: 'My Product',
             type: 'Food',
             user_id: 2,

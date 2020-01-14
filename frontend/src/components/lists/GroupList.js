@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-import { List } from '@material-ui/core';
+import { List, Typography } from '@material-ui/core';
 import { Group } from '..'
 import './GroupList.css'
-
-const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
 
 class GroupList extends Component {
   constructor(props) {
@@ -16,7 +14,7 @@ class GroupList extends Component {
   }
 
   async componentDidMount() {
-    axios.get(API_BASE_URL + '/groups').then((result) => {
+    axios.get(process.env.REACT_APP_API_BASEURL + '/groups').then((result) => {
       this.setState({ groups: result.data.result })
     })
   }
@@ -24,7 +22,7 @@ class GroupList extends Component {
   render() {
     return (
       <div className="Group-container">
-        <h3>{this.props.title}</h3>
+        <Typography variant="h6">{this.props.title}</Typography>
         <List>
           {this.state.groups.map((group) => <Group key={group.id} group={group} />)}
         </List>

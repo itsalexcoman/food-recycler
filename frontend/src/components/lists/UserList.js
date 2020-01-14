@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { List } from '@material-ui/core';
+import { List, Typography } from '@material-ui/core';
 import { User } from '..';
-
-const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
 
 class UserList extends Component {
   constructor(props) {
@@ -15,7 +13,7 @@ class UserList extends Component {
   }
 
   async componentDidMount() {
-    axios.get(API_BASE_URL + '/users').then((result) => {
+    axios.get(process.env.REACT_APP_API_BASEURL + '/users').then((result) => {
       this.setState({ users: result.data.result })
     })
   }
@@ -23,7 +21,7 @@ class UserList extends Component {
   render() {
     return (
       <div className={this.props.className}>
-        <h2>Users</h2>
+        <Typography variant="h4">Users</Typography>
         <List>
           {this.state.users.map((user) => <User key={user.id} profile={user} />)}
         </List>

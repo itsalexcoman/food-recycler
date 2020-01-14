@@ -4,8 +4,6 @@ import axios from 'axios';
 import { ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import GroupIcon from '@material-ui/icons/Group';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
-
 class Group extends Component {
   constructor(props) {
     super(props)
@@ -17,7 +15,7 @@ class Group extends Component {
   }
 
   async componentDidMount() {
-    axios.get(API_BASE_URL + '/groups/' + this.state.group.id + '/users').then((result) => {
+    axios.get(process.env.REACT_APP_API_BASEURL + '/groups/' + this.state.group.id + '/users').then((result) => {
       this.setState({ users: result.data.result.length })
     })
   }
