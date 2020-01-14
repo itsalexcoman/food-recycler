@@ -6,13 +6,13 @@ const App = () =>
   <Router>
     <Header />
     <Route path="/" exact render={
-      (props) => <Fridge type="Product" {...props} />
+      (props) => <Fridge profile="user" list="product" {...props} />
     } />
     <Route path="/community/" exact render={
       (props) => <Community {...props} />
     } />
-    <Route path="/users/" exact render={
-      (props) => <Fridge type="User" {...props} />
+    <Route path="/members/" exact render={
+      (props) => <Fridge profile="group" list="user" {...props} />
     } />
   </Router>
 

@@ -9,7 +9,7 @@ const styles = {
 }
 
 const Community = () =>
-  <Grid container xs justify="center" style={styles.padding}>
+  <Grid container justify="center" style={styles.padding}>
     <Grid container xs={10} direction="column">
       <Grid item style={styles.padding}>
         <Typography variant="h4">Community</Typography>

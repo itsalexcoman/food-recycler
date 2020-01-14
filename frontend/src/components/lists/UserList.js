@@ -21,7 +21,7 @@ class UserList extends Component {
   render() {
     return (
       <div className={this.props.className}>
-        <Typography variant="h4">Users</Typography>
+        <Typography variant="h4">Members</Typography>
         <List>
           {this.state.users.map((user) => <User key={user.id} profile={user} />)}
         </List>

@@ -10,15 +10,15 @@ const styles = {
 
 const Fridge = props =>
   <Grid container justify="center" spacing={2} style={styles.padding}>
-    <Grid item md={4}>
+    <Grid item xs={12} lg={4}>
       <Paper style={ styles.padding }>
-        <Profile type={props.type} />
+        <Profile type={props.profile} />
       </Paper>
     </Grid>
-    <Grid item md={6}>
+    <Grid item xs={12} lg={6}>
       <Paper style={ styles.padding }>
-        {(props.type === "Product") ? <ProductList /> :
-          (props.type === "User") ? <UserList /> :
+        {(props.list === "product") ? <ProductList /> :
+          (props.list === "user") ? <UserList /> :
             <Typography variant="h4">You broke the Fridge! What'd you do?</Typography>}
       </Paper>
     </Grid>
