@@ -13,7 +13,7 @@ import Select from '@material-ui/core/Select';
 
 import axios from 'axios';
 
-const API_BASE_URL = (process.env.REACT_APP_API_BASEURL) ? process.env.REACT_APP_API_BASEURL : 'http://localhost:3001/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
 
 export default function AddProduct() {
     const [open, setOpen] = React.useState(false);

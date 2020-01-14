@@ -4,7 +4,7 @@ import axios from 'axios';
 import List from '@material-ui/core/List';
 import User from '../items/User';
 
-const API_BASE_URL = (process.env.REACT_APP_API_BASEURL) ? process.env.REACT_APP_API_BASEURL : 'http://localhost:3001/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
 
 class UserList extends Component {
   constructor(props) {

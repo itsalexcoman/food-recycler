@@ -6,7 +6,7 @@ import Product from '../items/Product';
 import AddProduct from '../forms/AddProduct';
 import './ProductList.css'
 
-const API_BASE_URL = (process.env.REACT_APP_API_BASEURL) ? process.env.REACT_APP_API_BASEURL : 'http://localhost:3001/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
 
 class ProductList extends Component {
   constructor(props) {

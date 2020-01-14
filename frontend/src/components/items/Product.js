@@ -8,7 +8,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import FoodIcon from '@material-ui/icons/Fastfood';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-const API_BASE_URL = (process.env.REACT_APP_API_BASEURL) ? process.env.REACT_APP_API_BASEURL : 'http://localhost:3001/api';
+const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
 
 class Product extends Component {
   handleDelete = () => {
