@@ -1,8 +1,6 @@
 import React from 'react';
+import { Profile, UserList, ProductList } from '../components';
 import './Fridge.css'
-import Profile from '../components/Profile'
-import UserList from '../components/lists/UserList'
-import ProductList from '../components/lists/ProductList'
 
 class Fridge extends React.Component {
   constructor(props) {

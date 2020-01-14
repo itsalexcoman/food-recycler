@@ -1,17 +1,8 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add'
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-
 import axios from 'axios';
+
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import AddIcon from '@material-ui/icons/Add';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASEURL;
 

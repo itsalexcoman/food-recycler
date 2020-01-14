@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-import List from '@material-ui/core/List';
-import Group from '../items/Group'
+import { List } from '@material-ui/core';
+import { Group } from '..'
 import './GroupList.css'
 
 const API_BASE_URL = process.env.REACT_APP_API_BASEURL;

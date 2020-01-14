@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import PersonIcon from '@material-ui/icons/Person';
-import IconButton from '@material-ui/core/IconButton';
+import { IconButton, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import FridgeIcon from '@material-ui/icons/Restaurant';
+import PersonIcon from '@material-ui/icons/Person';
 
 class User extends Component {
     render() {

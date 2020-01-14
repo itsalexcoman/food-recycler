@@ -1,10 +1,9 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
 import PropTypes from 'prop-types';
+
+import { Tab, Tabs } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 
 const styles = theme => ({
   root: {

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ListItem from '@material-ui/core/ListItem';
-import IconButton from '@material-ui/core/IconButton';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
+import { IconButton, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import FoodIcon from '@material-ui/icons/Fastfood';
 import DeleteIcon from '@material-ui/icons/Delete';
 

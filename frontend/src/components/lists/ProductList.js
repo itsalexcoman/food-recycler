@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import List from '@material-ui/core/List';
-import Product from '../items/Product';
-import AddProduct from '../forms/AddProduct';
+import { List } from '@material-ui/core';
+import { Product, AddProduct } from '..';
 import './ProductList.css'
 
 const API_BASE_URL = process.env.REACT_APP_API_BASEURL;

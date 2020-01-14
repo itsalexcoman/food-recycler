@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
+import { ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
 import GroupIcon from '@material-ui/icons/Group';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASEURL;

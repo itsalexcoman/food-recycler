@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GroupList from "../components/lists/GroupList";
+import { GroupList } from "../components";
 
 class Community extends Component {
   render() {
