@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { Hidden, Tab, Tabs } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = () => ({
   navbar: {
     height: 0
   }
@@ -40,21 +39,17 @@ class Navbar extends Component {
     const { value } = this.state;
 
     return (
-        <Hidden smDown>
-          <Tabs value={value}
-            onChange={this.handleChange}
-            indicatorColor="secondary"
-            classes={{ indicator: classes.navbar }}> {
-              this.state.labels.map((element) => <Tab label={element} />)
-            }
-          </Tabs>
-        </Hidden>
+      <Hidden smDown>
+        <Tabs value={value}
+          onChange={this.handleChange}
+          indicatorColor="secondary"
+          classes={{ indicator: classes.navbar }}> {
+            this.state.labels.map((element, index) => <Tab key={index} label={element} />)
+          }
+        </Tabs>
+      </Hidden>
     );
   }
 }
-
-Navbar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withRouter(withStyles(styles)(Navbar));
