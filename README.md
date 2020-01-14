@@ -16,9 +16,10 @@ cd food-recycler
 npm run init
 ```
 
-The database configuration file (./backend/config/db.json) can be modified to your liking.
-
-**NOTE:** Running the `init` script will require sudo rights.
+##### A few things to keep in mind
+- Running the `init` script will prompt for your login password and the password for the MySQL `root` user
+- The `./frontend/.env` stores the custom environment variables needed for Food Recycler to work, so please adapt it to your situation (local/deployed install)
+- Please make sure to modify the database configuration file (`./backend/config/db.json`) after installing Food Recycler, so as to not use its default values
 
 ### Usage
 #### Production mode
