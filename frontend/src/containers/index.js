@@ -1,8 +1,11 @@
+import Splash from './Splash';
+import Login from './Login';
+import Register from './Register';
 import Header from './Header';
+import Navbar from './Navbar';
 import Fridge from './Fridge';
 import Community from './Community';
-import Navbar from './Navbar';
 
 export {
-    Header, Fridge, Community, Navbar
+    Splash, Login, Register, Header, Navbar, Fridge, Community
 }
