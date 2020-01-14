@@ -7,7 +7,7 @@ const Header = () =>
     <AppBar position="sticky">
         <Toolbar>
             <Hidden mdUp>
-                <IconButton edge="start" style={{ paddingRight: 20 }} color="inherit" aria-label="menu">
+                <IconButton edge="start" style={{ marginRight: 10 }} color="inherit" aria-label="menu">
                     <MenuIcon />
                 </IconButton>
             </Hidden>

@@ -10,19 +10,21 @@ const styles = {
 
 const Community = () =>
   <Grid container justify="center" style={styles.padding}>
-    <Grid container xs={10} direction="column">
-      <Grid item style={styles.padding}>
-        <Typography variant="h4">Community</Typography>
-      </Grid>
-      <Grid item>
-        <Paper style={styles.padding} elevation="3">
-          <GroupList title="Groups You Manage" />
-        </Paper>
-      </Grid>
-      <Grid item>
-        <Paper style={styles.padding} elevation="3">
-          <GroupList title="Groups You're In" />
-        </Paper>
+    <Grid item xs={10}>
+      <Grid container direction="column">
+        <Grid item style={styles.padding}>
+          <Typography variant="h4">Community</Typography>
+        </Grid>
+        <Grid item>
+          <Paper style={styles.padding} elevation={3}>
+            <GroupList title="Groups You Manage" />
+          </Paper>
+        </Grid>
+        <Grid item>
+          <Paper style={styles.padding} elevation={3}>
+            <GroupList title="Groups You're In" />
+          </Paper>
+        </Grid>
       </Grid>
     </Grid>
   </Grid>
