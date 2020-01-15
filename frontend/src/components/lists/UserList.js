@@ -1,33 +1,30 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-
-import { List, Typography } from '@material-ui/core';
-import { User } from '..';
+import React, { Component } from "react";
+import { List, Typography } from "@material-ui/core";
+import { User } from "..";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 class UserList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      users: []
-    }
-  }
-
-  async componentDidMount() {
-    axios.get(process.env.REACT_APP_API_BASEURL + '/users').then((result) => {
-      this.setState({ users: result.data.result })
-    })
-  }
-
   render() {
     return (
-      <div className={this.props.className}>
+      <div>
         <Typography variant="h4">Members</Typography>
         <List>
-          {this.state.users.map((user) => <User key={user.id} profile={user} />)}
+          {this.props.group.users.map(user => (
+            <User key={user.id} profile={user} />
+          ))}
         </List>
       </div>
-    )
+    );
   }
 }
 
-export default UserList;
+UserList.propTypes = {
+  group: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  group: state.group
+});
+
+export default connect(mapStateToProps, {})(UserList);
