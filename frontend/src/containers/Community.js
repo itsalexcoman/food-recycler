@@ -17,12 +17,12 @@ const Community = () =>
         </Grid>
         <Grid item>
           <Paper style={styles.padding} elevation={3}>
-            <GroupList title="Groups You Manage" />
+            <GroupList title="Groups You Manage" type="admin" />
           </Paper>
         </Grid>
         <Grid item>
           <Paper style={styles.padding} elevation={3}>
-            <GroupList title="Groups You're In" />
+            <GroupList title="Groups You're In" type="member" />
           </Paper>
         </Grid>
       </Grid>

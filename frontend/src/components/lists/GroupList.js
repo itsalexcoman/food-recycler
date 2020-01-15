@@ -6,11 +6,8 @@ import { Group } from '..'
 import './GroupList.css'
 
 class GroupList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      groups: []
-    }
+  state = {
+    groups: []
   }
 
   async componentDidMount() {
@@ -19,12 +16,17 @@ class GroupList extends Component {
     })
   }
 
+  getAdminGroups = () => this.state.groups.filter(group => group.admin_id === 2)
+
   render() {
     return (
       <div className="Group-container">
         <Typography variant="h6">{this.props.title}</Typography>
         <List>
-          {this.state.groups.map((group) => <Group key={group.id} group={group} />)}
+          {(this.props.type === "admin") ?
+            this.getAdminGroups().map((group) => <Group key={group.id} group={group} />) :
+            this.state.groups.map((group) => <Group key={group.id} group={group} />)
+          }
         </List>
       </div>
     )
