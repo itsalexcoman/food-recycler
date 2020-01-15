@@ -1,42 +1,38 @@
-import React from 'react';
-import { Avatar, Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { makeStyles } from '@material-ui/core/styles';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/itsalexcoman/food-recycler/">
-        vandgolf4
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import React from "react";
+import {
+  Avatar,
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  Link,
+  TextField,
+  Typography
+} from "@material-ui/core";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(3)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+    margin: theme.spacing(3, 0, 2)
+  }
 }));
 
-const Register = ({ toLogin }) => {
+const Register = ({ toLogin, splash }) => {
   const classes = useStyles();
 
   return (
@@ -63,19 +59,19 @@ const Register = ({ toLogin }) => {
                 autoFocus
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
                 required
                 fullWidth
                 id="email_register"
-                label="Email"
+                label="E-mail"
                 name="email"
                 autoComplete="email"
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -83,12 +79,12 @@ const Register = ({ toLogin }) => {
                 fullWidth
                 id="password_register"
                 label="Password"
-                type ="password"
+                type="password"
                 name="password"
                 autoComplete="password"
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -101,7 +97,7 @@ const Register = ({ toLogin }) => {
                 autoComplete="current-password"
               />
             </Grid>
-            
+
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
@@ -113,7 +109,6 @@ const Register = ({ toLogin }) => {
                 autoComplete="Bulding"
               />
             </Grid>
-            
           </Grid>
           <Button
             type="submit"
@@ -124,20 +119,22 @@ const Register = ({ toLogin }) => {
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container direction="column" spacing={3} alignItems="flex-end">
             <Grid item>
-              <Link href="#" variant="body2" onClick={toLogin}>
-                Already have an account? Sign in
+              <Link variant="body2" onClick={toLogin}>
+                {"Already have an account? Sign in"}
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link variant="body2" onClick={splash}>
+                {"← Back to Home"}
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
     </Container>
   );
-}
+};
 
 export default Register;

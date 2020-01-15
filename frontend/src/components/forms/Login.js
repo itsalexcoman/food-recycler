@@ -1,42 +1,38 @@
-import React from 'react';
-import { Avatar, Box, Button, Container, CssBaseline, Grid, Link, TextField, Typography } from '@material-ui/core';
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import { makeStyles } from '@material-ui/core/styles';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/itsalexcoman/food-recycler/">
-        vandgolf4
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import React from "react";
+import {
+  Avatar,
+  Button,
+  Container,
+  CssBaseline,
+  Grid,
+  Link,
+  TextField,
+  Typography
+} from "@material-ui/core";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center"
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.secondary.main
   },
   form: {
-    width: '100%', // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1)
   },
   submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
+    margin: theme.spacing(3, 0, 2)
+  }
 }));
 
-const Login = ({ toRegister }) => {
+const Login = ({ toRegister, splash }) => {
   const classes = useStyles();
 
   return (
@@ -82,21 +78,22 @@ const Login = ({ toRegister }) => {
           >
             Sign In
           </Button>
-          <Grid container>
-
+          <Grid container direction="column" spacing={3}>
             <Grid item>
-              <Link href="#" variant="body2" onClick={toRegister}>
+              <Link variant="body2" onClick={toRegister}>
                 {"Don't have an account? Sign Up"}
+              </Link>
+            </Grid>
+            <Grid item>
+              <Link variant="body2" onClick={splash}>
+                {"← Back to Home"}
               </Link>
             </Grid>
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
     </Container>
   );
-}
+};
 
 export default Login;
