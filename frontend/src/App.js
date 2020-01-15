@@ -11,8 +11,8 @@ export default class extends Component {
     }
   }
   
-  handleLogin = () => this.setState( { auth: { doLogin: true } } );
-  handleRegister = () => this.setState( { auth: { doRegister: true } } );
+  handleLogin = () => this.setState( { auth: { doLogin: true, doRegister: false } } );
+  handleRegister = () => this.setState( { auth: { doRegister: true, doLogin: false } } );
   handleGuest = () => this.setState( { auth: { isAuthenticated: true } } );
 
   render() {
@@ -20,10 +20,10 @@ export default class extends Component {
       return <Splash login={this.handleLogin} register={this.handleRegister} guest={this.handleGuest} />
     }
     if (!this.state.auth.isAuthenticated && this.state.auth.doLogin && !this.state.auth.doRegister) {
-      return <Login />
+      return <Login toRegister={this.handleRegister} />
     }
     if (!this.state.auth.isAuthenticated && !this.state.auth.doLogin && this.state.auth.doRegister) {
-      return <Register />
+      return <Register toLogin={this.handleLogin} />
     }
     if (this.state.auth.isAuthenticated) {
       return (

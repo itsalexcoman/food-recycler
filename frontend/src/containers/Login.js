@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SignIn() {
+const Login = ({ toRegister }) => {
   const classes = useStyles();
 
   return (
@@ -72,7 +72,7 @@ export default function SignIn() {
             id="password_login"
             autoComplete="current-password"
           />
-    
+
           <Button
             type="submit"
             fullWidth
@@ -83,9 +83,9 @@ export default function SignIn() {
             Sign In
           </Button>
           <Grid container>
-          
+
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="#" variant="body2" onClick={toRegister}>
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
@@ -98,3 +98,5 @@ export default function SignIn() {
     </Container>
   );
 }
+
+export default Login;
