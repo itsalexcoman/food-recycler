@@ -9,7 +9,7 @@ import {
   setAuthLogin,
   setAuthRegister,
   setAuthDone
-} from "./actions/screen.actions";
+} from "./actions/ui.actions";
 
 class App extends Component {
   handleSplash = () => this.props.setAuthSplash();

@@ -7,9 +7,10 @@ import {
   UI_FRIDGE_SET_LIST
 } from "./types";
 
-export const setFridgeProfile = () => {
+export const setFridgeProfile = profile => {
   return {
-    type: UI_FRIDGE_SET_PROFILE
+    type: UI_FRIDGE_SET_PROFILE,
+    payload: profile
   };
 };
 
