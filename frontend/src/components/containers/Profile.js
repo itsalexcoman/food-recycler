@@ -1,31 +1,19 @@
 import React, { Component } from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Avatar, Button, Grid, Typography } from "@material-ui/core";
 import { connect } from "react-redux";
-import { setFridgeProfile, setFridgeList } from "../../actions/screen.actions";
+import { setFridgeList } from "../../actions/ui.actions";
+import { getUserInfo } from "../../actions/user.actions";
+import { getGroupInfo } from "../../actions/group.actions";
 import PropTypes from "prop-types";
 
 class Profile extends Component {
-  state = {
-    profileData: {}
-  };
-
-  setFridgeList = type => {
-    this.props.setFridgeList(type);
-  };
-
-  async componentDidMount() {
+  componentDidMount() {
     if (this.props.ui.fridgeOptions.profile === "user") {
-      axios.get(process.env.REACT_APP_API_BASEURL + "/users/2").then(result => {
-        this.setState({ profileData: result.data.result });
-      });
+      this.props.getUserInfo(this.props.user.currentUser.id);
     }
     if (this.props.ui.fridgeOptions.profile === "group") {
-      axios
-        .get(process.env.REACT_APP_API_BASEURL + "/groups/3")
-        .then(result => {
-          this.setState({ profileData: result.data.result });
-        });
+      this.props.getGroupInfo(this.props.group.currentGroup.id);
     }
   }
 
@@ -37,16 +25,18 @@ class Profile extends Component {
             <Avatar style={{ width: 150, height: 150, margin: 20 }} />
           </Grid>
           <Grid item>
-            <Typography variant="h5">{this.state.profileData.name}</Typography>
-          </Grid>
-          <Grid item>
-            <Typography variant="body1">
-              {this.state.profileData.email}
+            <Typography variant="h5">
+              {this.props.user.currentUser.name}
             </Typography>
           </Grid>
           <Grid item>
             <Typography variant="body1">
-              Room Number: {this.state.profileData.room_number}
+              {this.props.user.currentUser.email}
+            </Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="body1">
+              Room Number: {this.props.user.currentUser.room_number}
             </Typography>
           </Grid>
         </Grid>
@@ -59,11 +49,13 @@ class Profile extends Component {
             <Avatar style={{ width: 150, height: 150, margin: 20 }} />
           </Grid>
           <Grid item>
-            <Typography variant="h5">{this.state.profileData.name}</Typography>
+            <Typography variant="h5">
+              {this.props.group.currentGroup.name}
+            </Typography>
           </Grid>
           <Grid item>
             <Typography variant="body1">
-              {this.state.profileData.description}
+              {this.props.group.currentGroup.description}
             </Typography>
           </Grid>
           <Grid item>
@@ -72,7 +64,7 @@ class Profile extends Component {
                 <Button
                   color="primary"
                   variant="contained"
-                  onClick={this.setFridgeList.bind(this, "users")}
+                  onClick={this.props.setFridgeList.bind(this, "users")}
                   style={{ margin: 10 }}
                 >
                   Members
@@ -82,7 +74,7 @@ class Profile extends Component {
                 <Button
                   color="primary"
                   variant="contained"
-                  onClick={this.setFridgeList.bind(this, "products")}
+                  onClick={this.props.setFridgeList.bind(this, "products")}
                   style={{ margin: 10 }}
                 >
                   Products
@@ -98,14 +90,18 @@ class Profile extends Component {
 
 Profile.propTypes = {
   ui: PropTypes.object.isRequired,
-  setFridgeProfile: PropTypes.func.isRequired,
-  setFridgeList: PropTypes.func.isRequired
+  user: PropTypes.object.isRequired,
+  setFridgeList: PropTypes.func.isRequired,
+  getUserInfo: PropTypes.func.isRequired,
+  getGroupInfo: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  ui: state.ui
+  ui: state.ui,
+  user: state.user,
+  group: state.group
 });
 
-const mapActionsToProps = { setFridgeProfile, setFridgeList };
+const mapActionsToProps = { setFridgeList, getUserInfo, getGroupInfo };
 
 export default connect(mapStateToProps, mapActionsToProps)(Profile);

@@ -1,4 +1,5 @@
 import {
+  USER_GET_INFO,
   USER_GET_PRODUCTS,
   USER_ADD_PRODUCT,
   USER_DELETE_PRODUCT,
@@ -15,6 +16,11 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case USER_GET_INFO:
+      return {
+        ...state,
+        currentUser: action.payload
+      };
     case USER_GET_PRODUCTS:
       return {
         ...state,

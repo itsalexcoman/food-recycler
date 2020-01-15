@@ -15,7 +15,7 @@ const initialState = {
   },
   isFridge: false,
   fridgeOptions: {
-    profile: "user",
+    profile: "group",
     list: "products"
   },
   isCommunity: false
@@ -69,7 +69,8 @@ export default function(state = initialState, action) {
         ...state,
         isFridge: true,
         fridgeOptions: {
-          profile: action.payload
+          profile: action.payload,
+          list: state.fridgeOptions.list
         }
       };
 

@@ -1,10 +1,21 @@
 import axios from "axios";
 import {
+  USER_GET_INFO,
   USER_GET_PRODUCTS,
   USER_ADD_PRODUCT,
   USER_DELETE_PRODUCT,
   USER_PRODUCTS_LOADING
 } from "./types";
+
+export const getUserInfo = id => dispatch => {
+  axios.get(process.env.REACT_APP_API_BASEURL + "/users/" + id).then(result => {
+    dispatch({
+      type: USER_GET_INFO,
+      payload: result.data.result
+    });
+  });
+  dispatch(getUserProducts(id));
+};
 
 export const getUserProducts = id => dispatch => {
   dispatch(setProductsLoading());
