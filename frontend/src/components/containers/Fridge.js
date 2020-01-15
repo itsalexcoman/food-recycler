@@ -1,6 +1,7 @@
 import React from 'react';
 import { Typography, Grid, Paper } from '@material-ui/core';
-import { Profile, UserList, ProductList } from '../components';
+import { UserList, ProductList } from '..';
+import { Profile } from '.';
 
 const styles = {
   padding: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Typography, Paper } from '@material-ui/core';
-import { GroupList } from '../components';
+import { GroupList } from '..';
 
 const styles = {
   padding: {

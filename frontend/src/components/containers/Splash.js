@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
-import logo from '../logo.svg';
+import logo from '../../logo.svg';
 import './Splash.css';
 
 const Splash = ({ login, register, guest }) =>

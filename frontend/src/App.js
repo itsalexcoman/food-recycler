@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Header, Fridge, Community, Splash, Login, Register } from './containers'
+import { Splash, Header, Fridge, Community } from './components/containers';
+import { Login, Register } from './components';
 
 export default class extends Component {
   state = {
