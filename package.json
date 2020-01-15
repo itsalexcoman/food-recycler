@@ -1,6 +1,6 @@
 {
     "name": "food-recycler",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "description": "SPA to help prevent food waste",
     "main": "server.js",
     "scripts": {
@@ -21,6 +21,7 @@
     },
     "homepage": "https://github.com/itsalexcoman/food-recycler#readme",
     "dependencies": {
+        "bcryptjs": "^2.4.3",
         "colors": "^1.4.0",
         "cors": "^2.8.5",
         "express": "^4.17.1",
