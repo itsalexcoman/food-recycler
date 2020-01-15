@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Avatar, Button, Grid, Typography } from '@material-ui/core';
 import { connect } from 'react-redux';
-import { setFridgeProfile, setFridgeList } from '../../actions/screenActions';
+import { setFridgeProfile, setFridgeList } from '../../actions/screen.actions';
 import PropTypes from 'prop-types';
 
 class Profile extends Component {

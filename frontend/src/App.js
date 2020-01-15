@@ -4,7 +4,7 @@ import { Splash, Header, Fridge, Community } from './components/containers';
 import { Login, Register } from './components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { setAuthSplash, setAuthLogin, setAuthRegister, setAuthDone } from './actions/screenActions';
+import { setAuthSplash, setAuthLogin, setAuthRegister, setAuthDone } from './actions/screen.actions';
 
 class App extends Component {
   handleLogin = () => this.props.setAuthLogin();
