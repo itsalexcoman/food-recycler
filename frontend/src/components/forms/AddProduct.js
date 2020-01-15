@@ -1,83 +1,142 @@
-import React from 'react';
-import axios from 'axios';
+import React, { Component } from "react";
 
-import { Button, Dialog, DialogActions, DialogContent, DialogTitle, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
-import AddIcon from '@material-ui/icons/Add';
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField
+} from "@material-ui/core";
+import AddIcon from "@material-ui/icons/Add";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { addProduct } from "../../actions/user.actions";
 
-export default function AddProduct() {
-    const [open, setOpen] = React.useState(false);
-    const [type, setType] = React.useState(false);
+class AddProduct extends Component {
+  state = {
+    name: "",
+    type: "",
+    days_left: "",
+    open: false
+  };
 
-    const handleClickOpen = () => {
-        setOpen(true);
+  handleClickOpen = () => {
+    this.setState({
+      open: true
+    });
+  };
+
+  handleClose = () => {
+    this.setState({
+      open: false
+    });
+  };
+
+  handleAdd = () => {
+    let newProduct = {
+      name: this.state.name,
+      type: this.state.type,
+      user_id: this.props.user.currentUser.id,
+      days_left: this.state.days_left
     };
+    this.props.addProduct(newProduct);
+    this.handleClose();
+  };
 
-    const handleClose = () => {
-        setOpen(false);
-    };
+  nameHandler = e => {
+    this.setState({
+      name: e.target.value
+    });
+  };
 
-    const handleChange = (e) => {
-        setType(e.target.value);
-    };
+  selectHandle = e => {
+    this.setState({
+      type: e.target.value
+    });
+  };
 
-    const handleAdd = () => {
-        axios.post(process.env.REACT_APP_API_BASEURL + '/products', {
-            name: 'My Product',
-            type: 'Food',
-            user_id: 2,
-            days_left: 3
-        })
-            .then(() => {
-                setOpen(false);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+  daysHandle = e => {
+    this.setState({
+      days_left: e.target.value
+    });
+  };
 
+  render() {
     return (
-        <div>
-            <Button color="secondary" variant="outlined" aria-label="add" startIcon={<AddIcon />} onClick={handleClickOpen}>
-                Add Product
+      <div>
+        <Button
+          color="secondary"
+          variant="outlined"
+          aria-label="add"
+          startIcon={<AddIcon />}
+          onClick={this.handleClickOpen}
+        >
+          Add Product
+        </Button>
+        <Dialog
+          open={this.state.open}
+          onClose={this.handleClose}
+          aria-labelledby="form-dialog-title"
+        >
+          <DialogTitle id="form-dialog-title">Add Product</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="name"
+              label="Name"
+              fullWidth
+              onChange={this.nameHandler}
+            />
+            <FormControl fullWidth>
+              <InputLabel id="select-label">Category</InputLabel>
+              <Select
+                labelId="select-label"
+                id="select"
+                value={this.state.type}
+                onChange={this.selectHandle}
+              >
+                <MenuItem value="Food">Food</MenuItem>
+                <MenuItem value="Drink">Drink</MenuItem>
+              </Select>
+            </FormControl>
+            <TextField
+              margin="dense"
+              id="days_left"
+              label="Days until expired"
+              type="number"
+              fullWidth
+              onChange={this.daysHandle}
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleClose} color="primary">
+              Cancel
             </Button>
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id="form-dialog-title">Add Product</DialogTitle>
-                <DialogContent>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="name"
-                        label="Name"
-                        fullWidth
-                    />
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Category</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={type}
-                            onChange={handleChange}>
-                            <MenuItem value="Food">Food</MenuItem>
-                            <MenuItem value="Drink">Drink</MenuItem>
-                        </Select>
-                    </FormControl>
-                    <TextField
-                        margin="dense"
-                        id="days_left"
-                        label="Days until expired"
-                        type="number"
-                        fullWidth
-                    />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose} color="primary">
-                        Cancel
-                    </Button>
-                    <Button onClick={handleAdd} color="primary">
-                        Add
-                    </Button>
-                </DialogActions>
-            </Dialog>
-        </div>
+            <Button onClick={this.handleAdd} color="primary">
+              Add
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </div>
     );
+  }
 }
+
+AddProduct.propTypes = {
+  user: PropTypes.object.isRequired,
+  addProduct: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+const mapActionsToProps = { addProduct };
+
+export default connect(mapStateToProps, mapActionsToProps)(AddProduct);

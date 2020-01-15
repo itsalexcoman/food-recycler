@@ -1,40 +1,41 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-
-import { List, Typography } from '@material-ui/core';
-import { Product, AddProduct } from '..';
-import './ProductList.css'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { getUserProducts } from "../../actions/user.actions";
+import { List, Typography } from "@material-ui/core";
+import { Product, AddProduct } from "..";
 
 class ProductList extends Component {
-  constructor(props) {
-    super(props)
-    this.divClasses = props.className + " Product-container";
-
-    this.state = {
-      user: 2,
-      products: []
-    }
-  }
-
-  async componentDidMount() {
-    axios.get(process.env.REACT_APP_API_BASEURL + '/users/' + this.state.user + '/products').then((result) => {
-      this.setState({ products: result.data.result })
-    })
+  componentDidMount() {
+    this.props.getUserProducts(this.props.user.currentUser.id);
   }
 
   render() {
     return (
-      <div className={this.divClasses}>
+      <div>
         <Typography variant="h4">Products</Typography>
         <List>
-          {this.state.products.map((product) => <Product key={product.id} product={product} />)}
+          {this.props.user.products.map(product => (
+            <Product key={product.id} product={product} />
+          ))}
         </List>
-        <div className="Product-add">
-          <AddProduct user={this.state.user} />
-        </div>
+        <AddProduct user={this.props.user.currentUser.id} />
       </div>
-    )
+    );
   }
 }
 
-export default ProductList;
+ProductList.propTypes = {
+  user: PropTypes.object.isRequired,
+  getUserProducts: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+const mapActionsToProps = {
+  getUserProducts
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(ProductList);

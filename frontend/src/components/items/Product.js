@@ -1,40 +1,58 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-
-import { IconButton, ListItem, ListItemAvatar, ListItemText } from '@material-ui/core';
-import FoodIcon from '@material-ui/icons/Fastfood';
-import DeleteIcon from '@material-ui/icons/Delete';
+import React, { Component } from "react";
+import {
+  IconButton,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Paper
+} from "@material-ui/core";
+import FoodIcon from "@material-ui/icons/Fastfood";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { deleteProduct } from "../../actions/user.actions";
 
 class Product extends Component {
-  handleDelete = () => {
-    axios.delete(process.env.REACT_APP_API_BASEURL + '/products/' + this.props.product.id)
-      .then(() => {
+  handleDelete = id => {
+    this.props.deleteProduct(id);
+  };
 
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-  }
   render() {
     let product = this.props.product;
 
     return (
-      <ListItem>
-        <ListItemAvatar>
-          <FoodIcon color="primary" />
-        </ListItemAvatar>
-        <ListItemText className="multiline">
-          <strong>{product.name}</strong> <br />
-          Days until expired: {product.days_left}
-        </ListItemText>
-
-        <IconButton color="primary" onClick={this.handleDelete}>
-          <DeleteIcon />
-        </IconButton>
-      </ListItem>
+      <Paper>
+        <ListItem style={{ marginBottom: 10 }}>
+          <ListItemAvatar>
+            <FoodIcon color="primary" />
+          </ListItemAvatar>
+          <ListItemText className="multiline">
+            <strong>{product.name}</strong> <br />
+            Days until expired: {product.days_left}
+          </ListItemText>
+          <IconButton
+            color="primary"
+            onClick={this.handleDelete.bind(this, product.id)}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </ListItem>
+      </Paper>
     );
   }
 }
 
-export default Product;
+Product.propTypes = {
+  user: PropTypes.object.isRequired,
+  deleteProduct: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  user: state.user
+});
+
+const mapActionsToProps = {
+  deleteProduct
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(Product);
