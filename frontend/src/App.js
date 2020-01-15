@@ -2,45 +2,50 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Splash, Header, Fridge, Community } from './components/containers';
 import { Login, Register } from './components';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { setAuthSplash, setAuthLogin, setAuthRegister, setAuthDone } from './actions/screenActions';
 
-export default class extends Component {
-  state = {
-    auth: {
-      isAuthenticated: false,
-      doLogin: false,
-      doRegister: false
-    }
-  }
-  
-  handleLogin = () => this.setState( { auth: { doLogin: true, doRegister: false } } );
-  handleRegister = () => this.setState( { auth: { doRegister: true, doLogin: false } } );
-  handleGuest = () => this.setState( { auth: { isAuthenticated: true } } );
+class App extends Component {
+  handleLogin = () => this.props.setAuthLogin();
+  handleRegister = () => this.props.setAuthRegister();
+  handleDemo = () => this.props.setAuthDone();
 
   render() {
-    if (!this.state.auth.isAuthenticated && !this.state.auth.doLogin && !this.state.auth.doRegister) {
-      return <Splash login={this.handleLogin} register={this.handleRegister} guest={this.handleGuest} />
+    const { authStatus } = this.props.ui;
+    if (!authStatus.isAuthenticated && !authStatus.doLogin && !authStatus.doRegister) {
+      return <Splash login={this.handleLogin} register={this.handleRegister} guest={this.handleDemo} />
     }
-    if (!this.state.auth.isAuthenticated && this.state.auth.doLogin && !this.state.auth.doRegister) {
+    if (!authStatus.isAuthenticated && authStatus.doLogin && !authStatus.doRegister) {
       return <Login toRegister={this.handleRegister} />
     }
-    if (!this.state.auth.isAuthenticated && !this.state.auth.doLogin && this.state.auth.doRegister) {
+    if (!authStatus.isAuthenticated && !authStatus.doLogin && authStatus.doRegister) {
       return <Register toLogin={this.handleLogin} />
     }
-    if (this.state.auth.isAuthenticated) {
+    if (authStatus.isAuthenticated) {
       return (
         <Router>
           <Header />
-          <Route path="/" exact render={
-            (props) => <Fridge profile="user" list="product" {...props} />
-          } />
-          <Route path="/community/" exact render={
-            (props) => <Community {...props} />
-          } />
-          <Route path="/members/" exact render={
-            (props) => <Fridge profile="group" list="user" {...props} />
-          } />
+          <Route path="/" exact component={Fridge} />
+          <Route path="/community/" exact component={Community} />
         </Router>
       );
     }
   }
 }
+
+App.propTypes = {
+  ui: PropTypes.object.isRequired,
+  setAuthSplash: PropTypes.func.isRequired,
+  setAuthLogin: PropTypes.func.isRequired,
+  setAuthRegister: PropTypes.func.isRequired,
+  setAuthDone: PropTypes.func.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  ui: state.ui
+});
+
+const mapActionsToProps = { setAuthSplash, setAuthLogin, setAuthRegister, setAuthDone };
+
+export default connect(mapStateToProps, mapActionsToProps)(App);

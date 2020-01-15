@@ -14,8 +14,8 @@ class Navbar extends Component {
   constructor(props) {
     super(props)
 
-    let pages = ['', '/community', '/members'];
-    let labels = ['My Fridge', 'Community', 'Members']
+    let pages = ['', '/community'];
+    let labels = ['My Fridge', 'Community']
 
     let pathname = this.props.location.pathname
     pathname = pathname[pathname.length - 1] !== '/' ? pathname : pathname.substr(0, pathname.length - 1)
